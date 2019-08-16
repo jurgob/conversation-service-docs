@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {HashRouter, BrowserRouter as Router, Route, Link } from "react-router-dom";
 import specs from './specs.openapi.json';
    import SwaggerUI from "swagger-ui-react"
   import "swagger-ui-react/swagger-ui.css"
@@ -9,14 +9,14 @@ import { RedocStandalone } from 'redoc';
 
 function App() {
   return (
-    <Router>
+    <HashRouter basename='/' >
       <div>
         <Header />
         <Route exact path="/" component={Home} />
         <Route path="/openapiui" component={OpenApiUi} />
         <Route path="/redoc" component={Redoc} />
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

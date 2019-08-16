@@ -1,7 +1,8 @@
 {
   "name": "conversation-service-docs",
+  "homepage": "https://jurgob.github.io/conversation-service-docs",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "mobx": "^4.13.0",
     "react": "^16.9.0",
@@ -18,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "SKIP_PREFLIGHT_CHECK=true gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
