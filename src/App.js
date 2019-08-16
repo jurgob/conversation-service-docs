@@ -1,25 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import specs from './specs.json';
+   import SwaggerUI from "swagger-ui-react"
+  import "swagger-ui-react/swagger-ui.css"
+import { RedocStandalone } from 'redoc';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Route exact path="/" component={Home} />
+        <Route path="/openapiui" component={OpenApiUi} />
+        <Route path="/redoc" component={Redoc} />
+      </div>
+    </Router>
+  );
+}
+
+function Home() {
+  return <pre style={{background: "#dfdfdf", padding: "10px"}} >{JSON.stringify(specs, null, '  ')} </pre>;
+}
+
+function OpenApiUi() {
+
+  return <SwaggerUI spec={specs} />;
+}
+
+function Redoc() {
+  return <RedocStandalone spec={specs} />;
+}
+
+
+function Header() {
+  return (
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/openapiui">Open api ui</Link>
+      </li>
+      <li>
+        <Link to="/redoc">Redoc</Link>
+      </li>
+    </ul>
   );
 }
 

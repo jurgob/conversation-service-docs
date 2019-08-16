@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mobx": "^4.13.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
+    "redoc": "^2.0.0-rc.14",
+    "styled-components": "^4.3.2",
+    "swagger-ui-react": "^3.23.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
