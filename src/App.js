@@ -46,6 +46,9 @@ function Header() {
       <li>
         <Link to="/redoc">Redoc</Link>
       </li>
+      <li>
+        <a href="https://github.com/jurgob/conversation-service-docs">Git hub project</a>
+      </li>
     </ul>
   );
 }

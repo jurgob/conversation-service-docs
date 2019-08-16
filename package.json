@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "SKIP_PREFLIGHT_CHECK=true npm run build",
     "deploy": "SKIP_PREFLIGHT_CHECK=true gh-pages -d build"
   },
   "eslintConfig": {
