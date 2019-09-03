@@ -1,5 +1,5 @@
 import React from "react";
-import {HashRouter, BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {HashRouter, Route, Link } from "react-router-dom";
 import specs from './specs.openapi.json';
    import SwaggerUI from "swagger-ui-react"
   import "swagger-ui-react/swagger-ui.css"
