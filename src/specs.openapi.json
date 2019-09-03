@@ -19,8 +19,6 @@
   "paths": {
     "/users": {
       "get": {
-        "x-swagger-router-controller": "users",
-        "x-group": "user",
         "summary": "List users",
         "parameters": [],
         "responses": {
@@ -37,11 +35,10 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_users"
       },
       "post": {
-        "x-swagger-router-controller": "users",
-        "x-group": "user",
         "summary": "Create a user",
         "parameters": [],
         "responses": {
@@ -58,13 +55,12 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/userNew"
-        }
+        },
+        "operationId": "post_users"
       }
     },
     "/users/{user_id}": {
       "get": {
-        "x-swagger-router-controller": "users",
-        "x-group": "user",
         "summary": "Retrieve a user",
         "parameters": [
           {
@@ -75,11 +71,10 @@
           "200": {
             "$ref": "#/components/responses/user"
           }
-        }
+        },
+        "operationId": "get_users_user_id"
       },
       "put": {
-        "x-swagger-router-controller": "users",
-        "x-group": "user",
         "summary": "Update a user",
         "parameters": [
           {
@@ -100,11 +95,10 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/userNew"
-        }
+        },
+        "operationId": "put_users_user_id"
       },
       "delete": {
-        "x-swagger-router-controller": "users",
-        "x-group": "user",
         "summary": "Delete a user",
         "parameters": [
           {
@@ -116,13 +110,12 @@
             "description": "",
             "content": {}
           }
-        }
+        },
+        "operationId": "delete_users_user_id"
       }
     },
     "/users/{user_id}/conversations": {
       "get": {
-        "x-swagger-router-controller": "users",
-        "x-group": "user",
         "summary": "List user conversations",
         "parameters": [
           {
@@ -146,13 +139,12 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_users_user_id_conversations"
       }
     },
     "/conversations": {
       "post": {
-        "x-swagger-router-controller": "createConversation",
-        "x-group": "conversation",
         "summary": "Create a conversation",
         "parameters": [],
         "responses": {
@@ -162,11 +154,10 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/conversation"
-        }
+        },
+        "operationId": "post_conversations"
       },
       "get": {
-        "x-swagger-router-controller": "listConversations",
-        "x-group": "conversation",
         "summary": "List conversations",
         "parameters": [
           {
@@ -251,14 +242,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_conversations"
       }
     },
     "/devices/{device_id}": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Add a device",
         "parameters": [
           {
             "$ref": "#/components/parameters/device_id"
@@ -291,12 +281,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/device_registation"
-        }
+        },
+        "operationId": "put_devices_device_id"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete a device",
         "parameters": [
           {
             "$ref": "#/components/parameters/device_id"
@@ -307,14 +296,13 @@
             "description": "",
             "content": {}
           }
-        }
+        },
+        "operationId": "delete_devices_device_id"
       }
     },
     "/knocking": {
       "post": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Create a Knocker",
         "parameters": [],
         "responses": {
           "200": {
@@ -360,14 +348,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "post_knocking"
       }
     },
     "/knocking/{knocking_id}": {
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete a Knocker",
         "parameters": [
           {
             "$ref": "#/components/parameters/knocking_id"
@@ -391,14 +378,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_knocking_knocking_id"
       }
     },
     "/sessions": {
       "post": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Create a session",
         "parameters": [],
         "responses": {
           "200": {
@@ -407,14 +393,13 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/session"
-        }
+        },
+        "operationId": "post_sessions"
       }
     },
     "/sessions/{session_id}": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Update a session",
         "parameters": [
           {
             "$ref": "#/components/parameters/session_id"
@@ -434,12 +419,11 @@
               }
             }
           }
-        }
+        },
+        "operationId": "put_sessions_session_id"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete a session",
         "parameters": [
           {
             "$ref": "#/components/parameters/session_id"
@@ -457,14 +441,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_sessions_session_id"
       }
     },
     "/capis/{capi_id}": {
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete all the session from a capi id",
         "parameters": [
           {
             "$ref": "#/components/parameters/capi_id"
@@ -490,13 +473,12 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_capis_capi_id"
       }
     },
     "/legs": {
       "get": {
-        "x-swagger-router-controller": "listLegs",
-        "x-group": "leg",
         "summary": "List legs",
         "parameters": [
           {
@@ -568,14 +550,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_legs"
       }
     },
     "/legs/{leg_id}": {
       "get": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Retrive a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -592,12 +573,11 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_legs_leg_id"
       },
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Update a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -617,11 +597,10 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/legModify"
-        }
+        },
+        "operationId": "put_legs_leg_id"
       },
       "delete": {
-        "x-swagger-router-controller": "deleteLeg",
-        "x-group": "leg",
         "summary": "Delete a leg",
         "parameters": [
           {
@@ -633,14 +612,13 @@
             "description": "",
             "content": {}
           }
-        }
+        },
+        "operationId": "delete_legs_leg_id"
       }
     },
     "/legs/{leg_id}/recording": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Start a leg recording",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -660,12 +638,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/legRecord"
-        }
+        },
+        "operationId": "put_legs_leg_id_recording"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -685,14 +662,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_legs_leg_id_recording"
       }
     },
     "/legs/{leg_id}/stream": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Add a strem to a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -712,12 +688,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/legStream"
-        }
+        },
+        "operationId": "put_legs_leg_id_stream"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete a leg id",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -734,14 +709,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_legs_leg_id_stream"
       }
     },
     "/legs/{leg_id}/talk": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Text to speach from a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -761,12 +735,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/legTalk"
-        }
+        },
+        "operationId": "put_legs_leg_id_talk"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Stop the Text to speach in a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -783,14 +756,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_legs_leg_id_talk"
       }
     },
     "/legs/{leg_id}/dtmf": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Send a dtmf from a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -810,12 +782,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/legDTMF"
-        }
+        },
+        "operationId": "put_legs_leg_id_dtmf"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete a dtm from a leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -832,14 +803,13 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_legs_leg_id_dtmf"
       }
     },
     "/legs/{leg_id}/asr": {
       "put": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Enalble Automatic Speech Recognition in the leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -859,12 +829,11 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/legASR"
-        }
+        },
+        "operationId": "put_legs_leg_id_asr"
       },
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Stop Automatic Speech Recognition in the leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/leg_id"
@@ -881,13 +850,12 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_legs_leg_id_asr"
       }
     },
     "/conversations/{conversation_id}": {
       "put": {
-        "x-swagger-router-controller": "conversations",
-        "x-group": "conversation",
         "summary": "Update a conversation",
         "parameters": [
           {
@@ -901,11 +869,10 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/conversation"
-        }
+        },
+        "operationId": "put_conversations_conversation_id"
       },
       "get": {
-        "x-swagger-router-controller": "retrieveConversation",
-        "x-group": "conversation",
         "summary": "Retrieve a conversation",
         "parameters": [
           {
@@ -916,11 +883,10 @@
           "200": {
             "$ref": "#/components/responses/conversation"
           }
-        }
+        },
+        "operationId": "get_conversations_conversation_id"
       },
       "delete": {
-        "x-swagger-router-controller": "deleteConversation",
-        "x-group": "conversation",
         "summary": "Delete a conversation",
         "parameters": [
           {
@@ -932,13 +898,12 @@
             "description": "",
             "content": {}
           }
-        }
+        },
+        "operationId": "delete_conversations_conversation_id"
       }
     },
     "/conversations/{conversation_id}/members": {
       "post": {
-        "x-swagger-router-controller": "members",
-        "x-group": "member",
         "summary": "Create a member",
         "parameters": [
           {
@@ -1058,11 +1023,10 @@
               }
             }
           }
-        }
+        },
+        "operationId": "post_conversations_conversation_id_members"
       },
       "get": {
-        "x-swagger-router-controller": "members",
-        "x-group": "member",
         "summary": "List members",
         "parameters": [
           {
@@ -1080,13 +1044,12 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_conversations_conversation_id_members"
       }
     },
     "/conversations/{conversation_id}/members/{member_id}": {
       "get": {
-        "x-swagger-router-controller": "members",
-        "x-group": "member",
         "summary": "Retrieve a member",
         "parameters": [
           {
@@ -1107,11 +1070,10 @@
               }
             }
           }
-        }
+        },
+        "operationId": "get_conversations_conversation_id_members_member_id"
       },
       "put": {
-        "x-swagger-router-controller": "members",
-        "x-group": "member",
         "summary": "Update a member",
         "parameters": [
           {
@@ -1169,11 +1131,10 @@
               }
             }
           }
-        }
+        },
+        "operationId": "put_conversations_conversation_id_members_member_id"
       },
       "delete": {
-        "x-swagger-router-controller": "members",
-        "x-group": "member",
         "summary": "Delete a member",
         "parameters": [
           {
@@ -1201,13 +1162,12 @@
               }
             }
           }
-        }
+        },
+        "operationId": "delete_conversations_conversation_id_members_member_id"
       }
     },
     "/conversations/{conversation_id}/events": {
       "post": {
-        "x-swagger-router-controller": "createEvent",
-        "x-group": "event",
         "summary": "Create an event",
         "parameters": [
           {
@@ -1221,11 +1181,10 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/events"
-        }
+        },
+        "operationId": "post_conversations_conversation_id_events"
       },
       "get": {
-        "x-swagger-router-controller": "getEvents",
-        "x-group": "event",
         "summary": "List events",
         "parameters": [
           {
@@ -1242,13 +1201,12 @@
           "200": {
             "$ref": "#/components/responses/eventsListResponse"
           }
-        }
+        },
+        "operationId": "get_conversations_conversation_id_events"
       }
     },
     "/conversations/{conversation_id}/events/{event_id}": {
       "get": {
-        "x-swagger-router-controller": "getEvent",
-        "x-group": "event",
         "summary": "Retrieve an event",
         "parameters": [
           {
@@ -1262,11 +1220,10 @@
           "200": {
             "$ref": "#/components/responses/eventsResponse"
           }
-        }
+        },
+        "operationId": "get_conversations_conversation_id_events_event_id"
       },
       "delete": {
-        "x-swagger-router-controller": "deleteEvent",
-        "x-group": "event",
         "summary": "Delete an event",
         "parameters": [
           {
@@ -1284,14 +1241,13 @@
             "description": "",
             "content": {}
           }
-        }
+        },
+        "operationId": "delete_conversations_conversation_id_events_event_id"
       }
     },
     "/conversations/{conversation_id}/rtc": {
       "post": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Create an rtc leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/conversation_id"
@@ -1304,14 +1260,13 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/rtcNewRequestType"
-        }
+        },
+        "operationId": "post_conversations_conversation_id_rtc"
       }
     },
     "/conversations/{conversation_id}/rtc/{rtc_id}/offer": {
       "post": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Send an sdp offer to an rtc leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/conversation_id"
@@ -1327,14 +1282,13 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/rtcOfferRequest"
-        }
+        },
+        "operationId": "post_conversations_conversation_id_rtc_rtc_id_offer"
       }
     },
     "/conversations/{conversation_id}/rtc/{rtc_id}/answer": {
       "post": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Send an sdp answer to an rtc leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/conversation_id"
@@ -1350,14 +1304,13 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/rtcAnswerRequest"
-        }
+        },
+        "operationId": "post_conversations_conversation_id_rtc_rtc_id_answer"
       }
     },
     "/conversations/{conversation_id}/rtc/{rtc_id}": {
       "delete": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Delete an rtc lel",
         "parameters": [
           {
             "$ref": "#/components/parameters/conversation_id"
@@ -1376,14 +1329,13 @@
           "200": {
             "$ref": "#/components/responses/rtcIdLite"
           }
-        }
+        },
+        "operationId": "delete_conversations_conversation_id_rtc_rtc_id"
       }
     },
     "/conversations/{conversation_id}/rtc/{rtc_id}/ice": {
       "post": {
-        "x-swagger-router-controller": "[TOBEDONE]",
-        "x-group": "[TOBEDONE]",
-        "summary": "[TOBEDONE]",
+        "summary": "Send ice to an rtc leg",
         "parameters": [
           {
             "$ref": "#/components/parameters/conversation_id"
@@ -1399,7 +1351,8 @@
         },
         "requestBody": {
           "$ref": "#/components/requestBodies/rtcIceRequest"
-        }
+        },
+        "operationId": "post_conversations_conversation_id_rtc_rtc_id_ice"
       }
     },
     "/subscribe": {
@@ -1465,12 +1418,6 @@
                               },
                               "conversation_id": {
                                 "$ref": "#/components/schemas/conversation_id"
-                              },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
-                              },
-                              "to": {
-                                "$ref": "#/components/schemas/member_id"
                               }
                             },
                             "required": [
@@ -1479,9 +1426,7 @@
                               "timestamp",
                               "body",
                               "id",
-                              "conversation_id",
-                              "from",
-                              "to"
+                              "conversation_id"
                             ]
                           },
                           {
@@ -1495,6 +1440,9 @@
                               },
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
                               },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
@@ -1558,6 +1506,9 @@
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
                               },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
                               },
@@ -1601,6 +1552,9 @@
                               },
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
                               },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
@@ -1668,6 +1622,9 @@
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
                               },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
                               },
@@ -1703,6 +1660,18 @@
                           {
                             "type": "object",
                             "properties": {
+                              "params": {
+                                "type": "object"
+                              },
+                              "id": {
+                                "$ref": "#/components/schemas/event_id"
+                              },
+                              "conversation_id": {
+                                "$ref": "#/components/schemas/conversation_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -1717,62 +1686,84 @@
                               },
                               "body": {
                                 "type": "object",
-                                "properties": {
-                                  "digits": {
-                                    "type": "string",
-                                    "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                                  },
-                                  "digit": {
-                                    "type": "string",
-                                    "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                                  },
-                                  "duration": {
-                                    "type": "integer"
-                                  },
-                                  "method": {
-                                    "type": "string",
-                                    "enum": [
-                                      "in"
-                                    ]
-                                  },
-                                  "channel": {
-                                    "oneOf": [
-                                      {
-                                        "$ref": "#/components/schemas/channel_lite"
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "digits": {
+                                        "$ref": "#/components/schemas/dtmf_pattern"
                                       },
-                                      {
-                                        "$ref": "#/components/schemas/channel"
+                                      "digit": {
+                                        "$ref": "#/components/schemas/dtmf_pattern"
+                                      },
+                                      "channel": {
+                                        "oneOf": [
+                                          {
+                                            "$ref": "#/components/schemas/channel_lite"
+                                          },
+                                          {
+                                            "$ref": "#/components/schemas/channel"
+                                          }
+                                        ]
+                                      },
+                                      "dtmf_seq": {
+                                        "type": "integer"
+                                      },
+                                      "dtmf_id": {
+                                        "type": "string"
+                                      },
+                                      "method": {
+                                        "type": "string",
+                                        "enum": [
+                                          "in"
+                                        ]
+                                      },
+                                      "duration": {
+                                        "type": "integer"
                                       }
+                                    },
+                                    "required": [
+                                      "duration"
                                     ]
                                   },
-                                  "dtmf_seq": {
-                                    "type": "integer"
-                                  },
-                                  "dtmf_id": {
-                                    "type": "string"
+                                  {
+                                    "properties": {
+                                      "digits": {
+                                        "$ref": "#/components/schemas/dtmf_pattern"
+                                      },
+                                      "digit": {
+                                        "$ref": "#/components/schemas/dtmf_pattern"
+                                      },
+                                      "channel": {
+                                        "oneOf": [
+                                          {
+                                            "$ref": "#/components/schemas/channel_lite"
+                                          },
+                                          {
+                                            "$ref": "#/components/schemas/channel"
+                                          }
+                                        ]
+                                      },
+                                      "dtmf_seq": {
+                                        "type": "integer"
+                                      },
+                                      "dtmf_id": {
+                                        "type": "string"
+                                      },
+                                      "duration": {
+                                        "type": "integer"
+                                      }
+                                    }
                                   }
-                                }
-                              },
-                              "params": {
-                                "type": "object"
-                              },
-                              "id": {
-                                "$ref": "#/components/schemas/event_id"
-                              },
-                              "conversation_id": {
-                                "$ref": "#/components/schemas/conversation_id"
-                              },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
+                                ]
                               }
                             },
                             "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
                               "id",
                               "conversation_id",
-                              "from"
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
                             ]
                           },
                           {
@@ -1786,6 +1777,9 @@
                               },
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
                               },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
@@ -1863,6 +1857,9 @@
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
                               },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
                               },
@@ -1898,6 +1895,18 @@
                           {
                             "type": "object",
                             "properties": {
+                              "params": {
+                                "type": "object"
+                              },
+                              "id": {
+                                "$ref": "#/components/schemas/event_id"
+                              },
+                              "conversation_id": {
+                                "$ref": "#/components/schemas/conversation_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -1913,7 +1922,20 @@
                               "body": {
                                 "type": "object",
                                 "properties": {}
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -1925,20 +1947,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -1954,7 +1963,20 @@
                               "body": {
                                 "type": "object",
                                 "properties": {}
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -1966,20 +1988,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2007,27 +2016,15 @@
                                     ]
                                   }
                                 }
-                              },
-                              "params": {
-                                "type": "object"
-                              },
-                              "id": {
-                                "$ref": "#/components/schemas/event_id"
-                              },
-                              "conversation_id": {
-                                "$ref": "#/components/schemas/conversation_id"
-                              },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
                               }
                             },
                             "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
                               "id",
                               "conversation_id",
-                              "from"
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
                             ]
                           },
                           {
@@ -2137,6 +2134,18 @@
                           {
                             "type": "object",
                             "properties": {
+                              "params": {
+                                "type": "object"
+                              },
+                              "id": {
+                                "$ref": "#/components/schemas/event_id"
+                              },
+                              "conversation_id": {
+                                "$ref": "#/components/schemas/conversation_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2159,7 +2168,20 @@
                                 "required": [
                                   "rtc_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2171,20 +2193,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2207,7 +2216,20 @@
                                 "required": [
                                   "rtc_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2219,20 +2241,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2255,7 +2264,20 @@
                                 "required": [
                                   "event_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2267,20 +2289,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2303,7 +2312,20 @@
                                 "required": [
                                   "event_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2315,20 +2337,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2380,7 +2389,20 @@
                                 "required": [
                                   "text"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2392,20 +2414,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2428,7 +2437,20 @@
                                 "required": [
                                   "event_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2440,20 +2462,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2476,7 +2485,20 @@
                                 "required": [
                                   "event_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2488,20 +2510,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2524,7 +2533,20 @@
                                     "$ref": "#/components/schemas/event_id"
                                   }
                                 }
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2536,20 +2558,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2572,7 +2581,20 @@
                                     "$ref": "#/components/schemas/event_id"
                                   }
                                 }
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2584,20 +2606,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2624,7 +2633,20 @@
                                   "text",
                                   "original_event_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2636,20 +2658,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2813,7 +2822,20 @@
                                   "media",
                                   "timestamp"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2825,20 +2847,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2897,7 +2906,20 @@
                                   "timestamp",
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -2909,20 +2931,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -2976,27 +2985,15 @@
                                   "timestamp",
                                   "channel"
                                 ]
-                              },
-                              "params": {
-                                "type": "object"
-                              },
-                              "id": {
-                                "$ref": "#/components/schemas/event_id"
-                              },
-                              "conversation_id": {
-                                "$ref": "#/components/schemas/conversation_id"
-                              },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
                               }
                             },
                             "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
                               "id",
                               "conversation_id",
-                              "from"
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
                             ]
                           },
                           {
@@ -3010,6 +3007,9 @@
                               },
                               "application_id": {
                                 "$ref": "#/components/schemas/application_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
                               },
                               "timestamp": {
                                 "$ref": "#/components/schemas/timestamp"
@@ -3060,6 +3060,18 @@
                           {
                             "type": "object",
                             "properties": {
+                              "params": {
+                                "type": "object"
+                              },
+                              "id": {
+                                "$ref": "#/components/schemas/event_id"
+                              },
+                              "conversation_id": {
+                                "$ref": "#/components/schemas/conversation_id"
+                              },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3082,7 +3094,20 @@
                                 "required": [
                                   "event_id"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3094,20 +3119,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3194,7 +3206,20 @@
                                   "from",
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3206,20 +3231,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3278,7 +3290,20 @@
                                   "start_time",
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3290,20 +3315,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3345,7 +3357,20 @@
                                   "transferred_from",
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3357,20 +3382,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3385,7 +3397,20 @@
                               },
                               "body": {
                                 "$ref": "#/components/schemas/hangup"
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3397,20 +3422,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3425,7 +3437,20 @@
                               },
                               "body": {
                                 "$ref": "#/components/schemas/hangup"
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3437,20 +3462,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3465,7 +3477,20 @@
                               },
                               "body": {
                                 "$ref": "#/components/schemas/answered"
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3477,20 +3502,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3505,7 +3517,20 @@
                               },
                               "body": {
                                 "$ref": "#/components/schemas/answered"
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3517,20 +3542,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3568,7 +3580,20 @@
                                   "confidence",
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3580,20 +3605,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3631,7 +3643,20 @@
                                   "media",
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3641,22 +3666,6 @@
                               "conversation_id": {
                                 "$ref": "#/components/schemas/conversation_id"
                               },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3693,6 +3702,21 @@
                                   "play_id"
                                 ]
                               },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3702,21 +3726,6 @@
                               "conversation_id": {
                                 "$ref": "#/components/schemas/conversation_id"
                               },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3776,60 +3785,134 @@
                                   "size"
                                 ]
                               },
-                              "params": {
-                                "type": "object"
-                              },
-                              "id": {
-                                "$ref": "#/components/schemas/event_id"
-                              },
-                              "conversation_id": {
-                                "$ref": "#/components/schemas/conversation_id"
-                              },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
                               }
                             },
                             "required": [
+                              "id",
+                              "conversation_id",
                               "type",
                               "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id"
+                              "timestamp"
                             ]
                           },
                           {
                             "type": "object",
-                            "properties": {
-                              "type": {
-                                "type": "string",
-                                "enum": [
-                                  "sip:ringing"
-                                ]
-                              },
-                              "application_id": {
-                                "$ref": "#/components/schemas/application_id"
-                              },
-                              "timestamp": {
-                                "$ref": "#/components/schemas/timestamp"
-                              },
-                              "body": {
-                                "type": "object",
+                            "oneOf": [
+                              {
                                 "properties": {
-                                  "channel": {
-                                    "oneOf": [
-                                      {
-                                        "$ref": "#/components/schemas/channel_lite"
-                                      },
-                                      {
-                                        "$ref": "#/components/schemas/channel"
-                                      }
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "sip:ringing"
                                     ]
+                                  },
+                                  "application_id": {
+                                    "$ref": "#/components/schemas/application_id"
+                                  },
+                                  "timestamp": {
+                                    "$ref": "#/components/schemas/timestamp"
+                                  },
+                                  "body": {
+                                    "type": "object",
+                                    "properties": {
+                                      "direction": {
+                                        "$ref": "#/components/schemas/full_direction"
+                                      },
+                                      "channel": {
+                                        "oneOf": [
+                                          {
+                                            "$ref": "#/components/schemas/channel_lite"
+                                          },
+                                          {
+                                            "$ref": "#/components/schemas/channel"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "direction",
+                                      "channel"
+                                    ]
+                                  },
+                                  "params": {
+                                    "type": "object"
+                                  },
+                                  "from": {
+                                    "$ref": "#/components/schemas/member_id"
+                                  },
+                                  "id": {
+                                    "type": "integer"
+                                  },
+                                  "conversation_id": {
+                                    "type": "string"
                                   }
                                 },
                                 "required": [
-                                  "channel"
+                                  "id",
+                                  "conversation_id",
+                                  "type",
+                                  "application_id",
+                                  "timestamp",
+                                  "from"
                                 ]
                               },
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "sip:ringing"
+                                    ]
+                                  },
+                                  "application_id": {
+                                    "$ref": "#/components/schemas/application_id"
+                                  },
+                                  "timestamp": {
+                                    "$ref": "#/components/schemas/timestamp"
+                                  },
+                                  "body": {
+                                    "type": "object",
+                                    "properties": {
+                                      "direction": {
+                                        "$ref": "#/components/schemas/full_direction"
+                                      },
+                                      "channel": {
+                                        "oneOf": [
+                                          {
+                                            "$ref": "#/components/schemas/channel_lite"
+                                          },
+                                          {
+                                            "$ref": "#/components/schemas/channel"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "direction",
+                                      "channel"
+                                    ]
+                                  },
+                                  "params": {
+                                    "type": "object"
+                                  },
+                                  "from": {
+                                    "$ref": "#/components/schemas/member_id"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "application_id",
+                                  "timestamp",
+                                  "from"
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3839,22 +3922,6 @@
                               "conversation_id": {
                                 "$ref": "#/components/schemas/conversation_id"
                               },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3891,6 +3958,21 @@
                                   "say_id"
                                 ]
                               },
+                              "from": {
+                                "$ref": "#/components/schemas/member_id"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3902,19 +3984,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3944,7 +4014,20 @@
                                 "required": [
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -3956,20 +4039,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -3999,7 +4069,20 @@
                                 "required": [
                                   "channel"
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -4011,20 +4094,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -4120,7 +4190,20 @@
                                     ]
                                   }
                                 ]
-                              },
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "conversation_id",
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
+                            ]
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
                               "params": {
                                 "type": "object"
                               },
@@ -4132,20 +4215,7 @@
                               },
                               "from": {
                                 "$ref": "#/components/schemas/member_id"
-                              }
-                            },
-                            "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
-                              "id",
-                              "conversation_id",
-                              "from"
-                            ]
-                          },
-                          {
-                            "type": "object",
-                            "properties": {
+                              },
                               "type": {
                                 "type": "string",
                                 "enum": [
@@ -4179,27 +4249,15 @@
                                   "channel",
                                   "asr"
                                 ]
-                              },
-                              "params": {
-                                "type": "object"
-                              },
-                              "id": {
-                                "$ref": "#/components/schemas/event_id"
-                              },
-                              "conversation_id": {
-                                "$ref": "#/components/schemas/conversation_id"
-                              },
-                              "from": {
-                                "$ref": "#/components/schemas/member_id"
                               }
                             },
                             "required": [
-                              "type",
-                              "application_id",
-                              "timestamp",
                               "id",
                               "conversation_id",
-                              "from"
+                              "from",
+                              "type",
+                              "application_id",
+                              "timestamp"
                             ]
                           },
                           {
@@ -4887,6 +4945,9 @@
                 "type": "number",
                 "format": "float"
               },
+              "knocking_id": {
+                "$ref": "#/components/schemas/knocking_id"
+              },
               "content-type": {
                 "type": "string"
               }
@@ -4989,6 +5050,9 @@
               "max_length": {
                 "type": "number",
                 "format": "float"
+              },
+              "knocking_id": {
+                "$ref": "#/components/schemas/knocking_id"
               }
             },
             "required": [
@@ -5261,7 +5325,14 @@
         "type": "object",
         "properties": {
           "channel": {
-            "$ref": "#/components/schemas/channel"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/channel_lite"
+              },
+              {
+                "$ref": "#/components/schemas/channel"
+              }
+            ]
           },
           "direction": {
             "$ref": "#/components/schemas/full_direction"
@@ -6026,6 +6097,10 @@
           "sdp"
         ]
       },
+      "dtmf_pattern": {
+        "type": "string",
+        "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
+      },
       "level": {
         "type": "number",
         "format": "double",
@@ -6372,9 +6447,6 @@
                     "state": {
                       "type": "string"
                     },
-                    "from": {
-                      "$ref": "#/components/schemas/member_id"
-                    },
                     "type": {
                       "type": "string"
                     }
@@ -6385,8 +6457,7 @@
                     "timestamp",
                     "href",
                     "body",
-                    "state",
-                    "from"
+                    "state"
                   ]
                 },
                 {
@@ -6641,41 +6712,75 @@
                     },
                     "body": {
                       "type": "object",
-                      "properties": {
-                        "digits": {
-                          "type": "string",
-                          "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                        },
-                        "digit": {
-                          "type": "string",
-                          "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                        },
-                        "duration": {
-                          "type": "integer"
-                        },
-                        "method": {
-                          "type": "string",
-                          "enum": [
-                            "in"
-                          ]
-                        },
-                        "channel": {
-                          "oneOf": [
-                            {
-                              "$ref": "#/components/schemas/channel_lite"
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "digits": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
                             },
-                            {
-                              "$ref": "#/components/schemas/channel"
+                            "digit": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
+                            },
+                            "channel": {
+                              "oneOf": [
+                                {
+                                  "$ref": "#/components/schemas/channel_lite"
+                                },
+                                {
+                                  "$ref": "#/components/schemas/channel"
+                                }
+                              ]
+                            },
+                            "dtmf_seq": {
+                              "type": "integer"
+                            },
+                            "dtmf_id": {
+                              "type": "string"
+                            },
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "in"
+                              ]
+                            },
+                            "duration": {
+                              "type": "integer"
                             }
+                          },
+                          "required": [
+                            "duration"
                           ]
                         },
-                        "dtmf_seq": {
-                          "type": "integer"
-                        },
-                        "dtmf_id": {
-                          "type": "string"
+                        {
+                          "properties": {
+                            "digits": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
+                            },
+                            "digit": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
+                            },
+                            "channel": {
+                              "oneOf": [
+                                {
+                                  "$ref": "#/components/schemas/channel_lite"
+                                },
+                                {
+                                  "$ref": "#/components/schemas/channel"
+                                }
+                              ]
+                            },
+                            "dtmf_seq": {
+                              "type": "integer"
+                            },
+                            "dtmf_id": {
+                              "type": "string"
+                            },
+                            "duration": {
+                              "type": "integer"
+                            }
+                          }
                         }
-                      }
+                      ]
                     },
                     "state": {
                       "type": "string"
@@ -8861,6 +8966,9 @@
                     "body": {
                       "type": "object",
                       "properties": {
+                        "direction": {
+                          "$ref": "#/components/schemas/full_direction"
+                        },
                         "channel": {
                           "oneOf": [
                             {
@@ -8873,6 +8981,7 @@
                         }
                       },
                       "required": [
+                        "direction",
                         "channel"
                       ]
                     },
@@ -9303,9 +9412,6 @@
                       "state": {
                         "type": "string"
                       },
-                      "from": {
-                        "$ref": "#/components/schemas/member_id"
-                      },
                       "type": {
                         "type": "string"
                       }
@@ -9316,8 +9422,7 @@
                       "timestamp",
                       "href",
                       "body",
-                      "state",
-                      "from"
+                      "state"
                     ]
                   },
                   {
@@ -9572,41 +9677,75 @@
                       },
                       "body": {
                         "type": "object",
-                        "properties": {
-                          "digits": {
-                            "type": "string",
-                            "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                          },
-                          "digit": {
-                            "type": "string",
-                            "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                          },
-                          "duration": {
-                            "type": "integer"
-                          },
-                          "method": {
-                            "type": "string",
-                            "enum": [
-                              "in"
-                            ]
-                          },
-                          "channel": {
-                            "oneOf": [
-                              {
-                                "$ref": "#/components/schemas/channel_lite"
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "digits": {
+                                "$ref": "#/components/schemas/dtmf_pattern"
                               },
-                              {
-                                "$ref": "#/components/schemas/channel"
+                              "digit": {
+                                "$ref": "#/components/schemas/dtmf_pattern"
+                              },
+                              "channel": {
+                                "oneOf": [
+                                  {
+                                    "$ref": "#/components/schemas/channel_lite"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/channel"
+                                  }
+                                ]
+                              },
+                              "dtmf_seq": {
+                                "type": "integer"
+                              },
+                              "dtmf_id": {
+                                "type": "string"
+                              },
+                              "method": {
+                                "type": "string",
+                                "enum": [
+                                  "in"
+                                ]
+                              },
+                              "duration": {
+                                "type": "integer"
                               }
+                            },
+                            "required": [
+                              "duration"
                             ]
                           },
-                          "dtmf_seq": {
-                            "type": "integer"
-                          },
-                          "dtmf_id": {
-                            "type": "string"
+                          {
+                            "properties": {
+                              "digits": {
+                                "$ref": "#/components/schemas/dtmf_pattern"
+                              },
+                              "digit": {
+                                "$ref": "#/components/schemas/dtmf_pattern"
+                              },
+                              "channel": {
+                                "oneOf": [
+                                  {
+                                    "$ref": "#/components/schemas/channel_lite"
+                                  },
+                                  {
+                                    "$ref": "#/components/schemas/channel"
+                                  }
+                                ]
+                              },
+                              "dtmf_seq": {
+                                "type": "integer"
+                              },
+                              "dtmf_id": {
+                                "type": "string"
+                              },
+                              "duration": {
+                                "type": "integer"
+                              }
+                            }
                           }
-                        }
+                        ]
                       },
                       "state": {
                         "type": "string"
@@ -11792,6 +11931,9 @@
                       "body": {
                         "type": "object",
                         "properties": {
+                          "direction": {
+                            "$ref": "#/components/schemas/full_direction"
+                          },
                           "channel": {
                             "oneOf": [
                               {
@@ -11804,6 +11946,7 @@
                           }
                         },
                         "required": [
+                          "direction",
                           "channel"
                         ]
                       },
@@ -13185,38 +13328,66 @@
                     },
                     "body": {
                       "type": "object",
-                      "properties": {
-                        "digits": {
-                          "type": "string",
-                          "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                        },
-                        "digit": {
-                          "type": "string",
-                          "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                        },
-                        "duration": {
-                          "type": "integer"
-                        },
-                        "method": {
-                          "type": "string",
-                          "enum": [
-                            "in"
-                          ]
-                        },
-                        "channel": {
-                          "oneOf": [
-                            {
-                              "$ref": "#/components/schemas/channel_lite"
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "digits": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
                             },
-                            {
-                              "$ref": "#/components/schemas/channel"
+                            "digit": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
+                            },
+                            "channel": {
+                              "oneOf": [
+                                {
+                                  "$ref": "#/components/schemas/channel_lite"
+                                },
+                                {
+                                  "$ref": "#/components/schemas/channel"
+                                }
+                              ]
+                            },
+                            "dtmf_seq": {
+                              "type": "integer"
+                            },
+                            "method": {
+                              "type": "string",
+                              "enum": [
+                                "in"
+                              ]
+                            },
+                            "duration": {
+                              "type": "integer"
                             }
+                          },
+                          "required": [
+                            "duration"
                           ]
                         },
-                        "dtmf_seq": {
-                          "type": "integer"
+                        {
+                          "properties": {
+                            "digits": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
+                            },
+                            "digit": {
+                              "$ref": "#/components/schemas/dtmf_pattern"
+                            },
+                            "channel": {
+                              "oneOf": [
+                                {
+                                  "$ref": "#/components/schemas/channel_lite"
+                                },
+                                {
+                                  "$ref": "#/components/schemas/channel"
+                                }
+                              ]
+                            },
+                            "dtmf_seq": {
+                              "type": "integer"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   },
                   "required": [
@@ -14778,12 +14949,6 @@
                         },
                         "conversation_id": {
                           "$ref": "#/components/schemas/conversation_id"
-                        },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
-                        },
-                        "to": {
-                          "$ref": "#/components/schemas/member_id"
                         }
                       },
                       "required": [
@@ -14792,9 +14957,7 @@
                         "timestamp",
                         "body",
                         "id",
-                        "conversation_id",
-                        "from",
-                        "to"
+                        "conversation_id"
                       ]
                     },
                     {
@@ -14808,6 +14971,9 @@
                         },
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
                         },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
@@ -14871,6 +15037,9 @@
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
                         },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
                         },
@@ -14914,6 +15083,9 @@
                         },
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
                         },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
@@ -14981,6 +15153,9 @@
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
                         },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
                         },
@@ -15016,6 +15191,18 @@
                     {
                       "type": "object",
                       "properties": {
+                        "params": {
+                          "type": "object"
+                        },
+                        "id": {
+                          "$ref": "#/components/schemas/event_id"
+                        },
+                        "conversation_id": {
+                          "$ref": "#/components/schemas/conversation_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15030,62 +15217,84 @@
                         },
                         "body": {
                           "type": "object",
-                          "properties": {
-                            "digits": {
-                              "type": "string",
-                              "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                            },
-                            "digit": {
-                              "type": "string",
-                              "pattern": "^([abcdABCD0-9\\*\\#pP])+$"
-                            },
-                            "duration": {
-                              "type": "integer"
-                            },
-                            "method": {
-                              "type": "string",
-                              "enum": [
-                                "in"
-                              ]
-                            },
-                            "channel": {
-                              "oneOf": [
-                                {
-                                  "$ref": "#/components/schemas/channel_lite"
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "digits": {
+                                  "$ref": "#/components/schemas/dtmf_pattern"
                                 },
-                                {
-                                  "$ref": "#/components/schemas/channel"
+                                "digit": {
+                                  "$ref": "#/components/schemas/dtmf_pattern"
+                                },
+                                "channel": {
+                                  "oneOf": [
+                                    {
+                                      "$ref": "#/components/schemas/channel_lite"
+                                    },
+                                    {
+                                      "$ref": "#/components/schemas/channel"
+                                    }
+                                  ]
+                                },
+                                "dtmf_seq": {
+                                  "type": "integer"
+                                },
+                                "dtmf_id": {
+                                  "type": "string"
+                                },
+                                "method": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in"
+                                  ]
+                                },
+                                "duration": {
+                                  "type": "integer"
                                 }
+                              },
+                              "required": [
+                                "duration"
                               ]
                             },
-                            "dtmf_seq": {
-                              "type": "integer"
-                            },
-                            "dtmf_id": {
-                              "type": "string"
+                            {
+                              "properties": {
+                                "digits": {
+                                  "$ref": "#/components/schemas/dtmf_pattern"
+                                },
+                                "digit": {
+                                  "$ref": "#/components/schemas/dtmf_pattern"
+                                },
+                                "channel": {
+                                  "oneOf": [
+                                    {
+                                      "$ref": "#/components/schemas/channel_lite"
+                                    },
+                                    {
+                                      "$ref": "#/components/schemas/channel"
+                                    }
+                                  ]
+                                },
+                                "dtmf_seq": {
+                                  "type": "integer"
+                                },
+                                "dtmf_id": {
+                                  "type": "string"
+                                },
+                                "duration": {
+                                  "type": "integer"
+                                }
+                              }
                             }
-                          }
-                        },
-                        "params": {
-                          "type": "object"
-                        },
-                        "id": {
-                          "$ref": "#/components/schemas/event_id"
-                        },
-                        "conversation_id": {
-                          "$ref": "#/components/schemas/conversation_id"
-                        },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
+                          ]
                         }
                       },
                       "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
                         "id",
                         "conversation_id",
-                        "from"
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
                       ]
                     },
                     {
@@ -15099,6 +15308,9 @@
                         },
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
                         },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
@@ -15176,6 +15388,9 @@
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
                         },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
                         },
@@ -15211,6 +15426,18 @@
                     {
                       "type": "object",
                       "properties": {
+                        "params": {
+                          "type": "object"
+                        },
+                        "id": {
+                          "$ref": "#/components/schemas/event_id"
+                        },
+                        "conversation_id": {
+                          "$ref": "#/components/schemas/conversation_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15226,7 +15453,20 @@
                         "body": {
                           "type": "object",
                           "properties": {}
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15238,20 +15478,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15267,7 +15494,20 @@
                         "body": {
                           "type": "object",
                           "properties": {}
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15279,20 +15519,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15320,27 +15547,15 @@
                               ]
                             }
                           }
-                        },
-                        "params": {
-                          "type": "object"
-                        },
-                        "id": {
-                          "$ref": "#/components/schemas/event_id"
-                        },
-                        "conversation_id": {
-                          "$ref": "#/components/schemas/conversation_id"
-                        },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
                         }
                       },
                       "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
                         "id",
                         "conversation_id",
-                        "from"
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
                       ]
                     },
                     {
@@ -15450,6 +15665,18 @@
                     {
                       "type": "object",
                       "properties": {
+                        "params": {
+                          "type": "object"
+                        },
+                        "id": {
+                          "$ref": "#/components/schemas/event_id"
+                        },
+                        "conversation_id": {
+                          "$ref": "#/components/schemas/conversation_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15472,7 +15699,20 @@
                           "required": [
                             "rtc_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15484,20 +15724,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15520,7 +15747,20 @@
                           "required": [
                             "rtc_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15532,20 +15772,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15568,7 +15795,20 @@
                           "required": [
                             "event_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15580,20 +15820,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15616,7 +15843,20 @@
                           "required": [
                             "event_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15628,20 +15868,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15693,7 +15920,20 @@
                           "required": [
                             "text"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15705,20 +15945,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15741,7 +15968,20 @@
                           "required": [
                             "event_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15753,20 +15993,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15789,7 +16016,20 @@
                           "required": [
                             "event_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15801,20 +16041,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15837,7 +16064,20 @@
                               "$ref": "#/components/schemas/event_id"
                             }
                           }
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15849,20 +16089,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15885,7 +16112,20 @@
                               "$ref": "#/components/schemas/event_id"
                             }
                           }
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15897,20 +16137,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -15937,7 +16164,20 @@
                             "text",
                             "original_event_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -15949,20 +16189,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16126,7 +16353,20 @@
                             "media",
                             "timestamp"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16138,20 +16378,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16210,7 +16437,20 @@
                             "timestamp",
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16222,20 +16462,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16289,27 +16516,15 @@
                             "timestamp",
                             "channel"
                           ]
-                        },
-                        "params": {
-                          "type": "object"
-                        },
-                        "id": {
-                          "$ref": "#/components/schemas/event_id"
-                        },
-                        "conversation_id": {
-                          "$ref": "#/components/schemas/conversation_id"
-                        },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
                         }
                       },
                       "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
                         "id",
                         "conversation_id",
-                        "from"
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
                       ]
                     },
                     {
@@ -16323,6 +16538,9 @@
                         },
                         "application_id": {
                           "$ref": "#/components/schemas/application_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
                         },
                         "timestamp": {
                           "$ref": "#/components/schemas/timestamp"
@@ -16373,6 +16591,18 @@
                     {
                       "type": "object",
                       "properties": {
+                        "params": {
+                          "type": "object"
+                        },
+                        "id": {
+                          "$ref": "#/components/schemas/event_id"
+                        },
+                        "conversation_id": {
+                          "$ref": "#/components/schemas/conversation_id"
+                        },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16395,7 +16625,20 @@
                           "required": [
                             "event_id"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16407,20 +16650,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16507,7 +16737,20 @@
                             "from",
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16519,20 +16762,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16591,7 +16821,20 @@
                             "start_time",
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16603,20 +16846,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16658,7 +16888,20 @@
                             "transferred_from",
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16670,20 +16913,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16698,7 +16928,20 @@
                         },
                         "body": {
                           "$ref": "#/components/schemas/hangup"
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16710,20 +16953,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16738,7 +16968,20 @@
                         },
                         "body": {
                           "$ref": "#/components/schemas/hangup"
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16750,20 +16993,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16778,7 +17008,20 @@
                         },
                         "body": {
                           "$ref": "#/components/schemas/answered"
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16790,20 +17033,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16818,7 +17048,20 @@
                         },
                         "body": {
                           "$ref": "#/components/schemas/answered"
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16830,20 +17073,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16881,7 +17111,20 @@
                             "confidence",
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16893,20 +17136,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -16944,7 +17174,20 @@
                             "media",
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -16954,22 +17197,6 @@
                         "conversation_id": {
                           "$ref": "#/components/schemas/conversation_id"
                         },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17006,6 +17233,21 @@
                             "play_id"
                           ]
                         },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -17015,21 +17257,6 @@
                         "conversation_id": {
                           "$ref": "#/components/schemas/conversation_id"
                         },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17089,60 +17316,134 @@
                             "size"
                           ]
                         },
-                        "params": {
-                          "type": "object"
-                        },
-                        "id": {
-                          "$ref": "#/components/schemas/event_id"
-                        },
-                        "conversation_id": {
-                          "$ref": "#/components/schemas/conversation_id"
-                        },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
                         }
                       },
                       "required": [
+                        "id",
+                        "conversation_id",
                         "type",
                         "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id"
+                        "timestamp"
                       ]
                     },
                     {
                       "type": "object",
-                      "properties": {
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "sip:ringing"
-                          ]
-                        },
-                        "application_id": {
-                          "$ref": "#/components/schemas/application_id"
-                        },
-                        "timestamp": {
-                          "$ref": "#/components/schemas/timestamp"
-                        },
-                        "body": {
-                          "type": "object",
+                      "oneOf": [
+                        {
                           "properties": {
-                            "channel": {
-                              "oneOf": [
-                                {
-                                  "$ref": "#/components/schemas/channel_lite"
-                                },
-                                {
-                                  "$ref": "#/components/schemas/channel"
-                                }
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "sip:ringing"
                               ]
+                            },
+                            "application_id": {
+                              "$ref": "#/components/schemas/application_id"
+                            },
+                            "timestamp": {
+                              "$ref": "#/components/schemas/timestamp"
+                            },
+                            "body": {
+                              "type": "object",
+                              "properties": {
+                                "direction": {
+                                  "$ref": "#/components/schemas/full_direction"
+                                },
+                                "channel": {
+                                  "oneOf": [
+                                    {
+                                      "$ref": "#/components/schemas/channel_lite"
+                                    },
+                                    {
+                                      "$ref": "#/components/schemas/channel"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "direction",
+                                "channel"
+                              ]
+                            },
+                            "params": {
+                              "type": "object"
+                            },
+                            "from": {
+                              "$ref": "#/components/schemas/member_id"
+                            },
+                            "id": {
+                              "type": "integer"
+                            },
+                            "conversation_id": {
+                              "type": "string"
                             }
                           },
                           "required": [
-                            "channel"
+                            "id",
+                            "conversation_id",
+                            "type",
+                            "application_id",
+                            "timestamp",
+                            "from"
                           ]
                         },
+                        {
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "sip:ringing"
+                              ]
+                            },
+                            "application_id": {
+                              "$ref": "#/components/schemas/application_id"
+                            },
+                            "timestamp": {
+                              "$ref": "#/components/schemas/timestamp"
+                            },
+                            "body": {
+                              "type": "object",
+                              "properties": {
+                                "direction": {
+                                  "$ref": "#/components/schemas/full_direction"
+                                },
+                                "channel": {
+                                  "oneOf": [
+                                    {
+                                      "$ref": "#/components/schemas/channel_lite"
+                                    },
+                                    {
+                                      "$ref": "#/components/schemas/channel"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "direction",
+                                "channel"
+                              ]
+                            },
+                            "params": {
+                              "type": "object"
+                            },
+                            "from": {
+                              "$ref": "#/components/schemas/member_id"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "application_id",
+                            "timestamp",
+                            "from"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -17152,22 +17453,6 @@
                         "conversation_id": {
                           "$ref": "#/components/schemas/conversation_id"
                         },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17204,6 +17489,21 @@
                             "say_id"
                           ]
                         },
+                        "from": {
+                          "$ref": "#/components/schemas/member_id"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -17215,19 +17515,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17257,7 +17545,20 @@
                           "required": [
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -17269,20 +17570,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17312,7 +17600,20 @@
                           "required": [
                             "channel"
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -17324,20 +17625,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17433,7 +17721,20 @@
                               ]
                             }
                           ]
-                        },
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "conversation_id",
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
                         "params": {
                           "type": "object"
                         },
@@ -17445,20 +17746,7 @@
                         },
                         "from": {
                           "$ref": "#/components/schemas/member_id"
-                        }
-                      },
-                      "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
-                        "id",
-                        "conversation_id",
-                        "from"
-                      ]
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
+                        },
                         "type": {
                           "type": "string",
                           "enum": [
@@ -17492,27 +17780,15 @@
                             "channel",
                             "asr"
                           ]
-                        },
-                        "params": {
-                          "type": "object"
-                        },
-                        "id": {
-                          "$ref": "#/components/schemas/event_id"
-                        },
-                        "conversation_id": {
-                          "$ref": "#/components/schemas/conversation_id"
-                        },
-                        "from": {
-                          "$ref": "#/components/schemas/member_id"
                         }
                       },
                       "required": [
-                        "type",
-                        "application_id",
-                        "timestamp",
                         "id",
                         "conversation_id",
-                        "from"
+                        "from",
+                        "type",
+                        "application_id",
+                        "timestamp"
                       ]
                     },
                     {
