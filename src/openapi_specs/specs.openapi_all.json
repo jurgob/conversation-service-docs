@@ -295,7 +295,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "webhooks"
+    ]
    }
   },
   "/v2/applications/{id}": {
@@ -551,7 +554,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "webhooks"
+    ]
    }
   },
   "/beta/users": {
@@ -574,7 +580,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "users"
+    ]
    },
    "post": {
     "summary": "Create a user",
@@ -595,7 +604,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/userNew"
-    }
+    },
+    "tags": [
+     "users"
+    ]
    }
   },
   "/beta2/users": {
@@ -618,7 +630,10 @@
      "200": {
       "$ref": "#/components/responses/user_list"
      }
-    }
+    },
+    "tags": [
+     "users"
+    ]
    }
   },
   "/beta/users/{user_id}": {
@@ -635,7 +650,10 @@
      "200": {
       "$ref": "#/components/responses/user"
      }
-    }
+    },
+    "tags": [
+     "users"
+    ]
    },
    "put": {
     "summary": "Update a user",
@@ -660,7 +678,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/userNew"
-    }
+    },
+    "tags": [
+     "users"
+    ]
    },
    "delete": {
     "summary": "Delete a user",
@@ -676,7 +697,10 @@
       "description": "",
       "content": {}
      }
-    }
+    },
+    "tags": [
+     "users"
+    ]
    }
   },
   "/beta/users/{user_id}/conversations": {
@@ -706,7 +730,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "users"
+    ]
    }
   },
   "/beta2/users/{user_id}/conversations": {
@@ -738,7 +765,10 @@
      "200": {
       "$ref": "#/components/responses/user_conversations_list"
      }
-    }
+    },
+    "tags": [
+     "users"
+    ]
    }
   },
   "/beta/conversations": {
@@ -754,7 +784,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/conversation"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    },
    "get": {
     "summary": "List conversations",
@@ -843,7 +876,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta2/conversations": {
@@ -875,7 +911,10 @@
      "200": {
       "$ref": "#/components/responses/conversation_list"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/conversations/{conv_id}": {
@@ -892,7 +931,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/conversation"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    },
    "get": {
     "parameters": [
@@ -904,7 +946,10 @@
      "200": {
       "$ref": "#/components/responses/conversation"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    },
    "delete": {
     "parameters": [
@@ -917,7 +962,10 @@
       "description": "",
       "content": {}
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}": {
@@ -934,7 +982,10 @@
      "200": {
       "$ref": "#/components/responses/conversation_2"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/devices/{device_id}": {
@@ -971,7 +1022,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/device_registation"
-    }
+    },
+    "tags": [
+     "devices"
+    ]
    },
    "delete": {
     "parameters": [
@@ -984,7 +1038,10 @@
       "description": "",
       "content": {}
      }
-    }
+    },
+    "tags": [
+     "devices"
+    ]
    }
   },
   "/beta2/devices/{device_id}": {
@@ -1021,7 +1078,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/device_registation_v2"
-    }
+    },
+    "tags": [
+     "devices"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/members": {
@@ -1240,7 +1300,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    },
    "get": {
     "parameters": [
@@ -1259,7 +1322,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}/members": {
@@ -1285,7 +1351,10 @@
      "200": {
       "$ref": "#/components/responses/member_list"
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/members/{member_id}": {
@@ -1309,7 +1378,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    },
    "put": {
     "parameters": [
@@ -1368,7 +1440,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    },
    "delete": {
     "parameters": [
@@ -1397,7 +1472,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}/members/{member_id}": {
@@ -1424,7 +1502,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "conversations members"
+    ]
    }
   },
   "/beta/knocking": {
@@ -1474,7 +1555,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "knocking"
+    ]
    }
   },
   "/beta/knocking/{knocking_id}": {
@@ -1502,7 +1586,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "knocking"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/events": {
@@ -1519,7 +1606,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/events"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    },
    "get": {
     "parameters": [
@@ -1537,7 +1627,10 @@
      "200": {
       "$ref": "#/components/responses/eventsListResponse"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}/events": {
@@ -1572,7 +1665,10 @@
      "200": {
       "$ref": "#/components/responses/event_list"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/events/{event_id}": {
@@ -1589,7 +1685,10 @@
      "200": {
       "$ref": "#/components/responses/eventsResponse"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    },
    "delete": {
     "parameters": [
@@ -1608,7 +1707,10 @@
       "description": "",
       "content": {}
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}/events/{event_id}": {
@@ -1632,7 +1734,10 @@
       "description": "",
       "content": {}
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/sessions": {
@@ -1645,7 +1750,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/session"
-    }
+    },
+    "tags": [
+     "sessions"
+    ]
    }
   },
   "/beta/sessions/{session_id}": {
@@ -1669,7 +1777,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "sessions"
+    ]
    },
    "delete": {
     "parameters": [
@@ -1689,7 +1800,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "sessions"
+    ]
    }
   },
   "/beta/capis/{capi_id}": {
@@ -1719,7 +1833,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "capis"
+    ]
    }
   },
   "/beta/legs": {
@@ -1798,7 +1915,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta2/legs": {
@@ -1833,7 +1953,10 @@
      "200": {
       "$ref": "#/components/responses/leg_list"
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/legs/{leg_id}": {
@@ -1854,7 +1977,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "put": {
     "parameters": [
@@ -1876,7 +2002,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/legModify"
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "delete": {
     "summary": "Delete a leg",
@@ -1892,7 +2021,10 @@
       "description": "",
       "content": {}
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/legs/{leg_id}/recording": {
@@ -1916,7 +2048,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/legRecord"
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "delete": {
     "parameters": [
@@ -1938,7 +2073,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/legs/{leg_id}/stream": {
@@ -1962,7 +2100,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/legStream"
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "delete": {
     "parameters": [
@@ -1981,7 +2122,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/legs/{leg_id}/talk": {
@@ -2005,7 +2149,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/legTalk"
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "delete": {
     "parameters": [
@@ -2024,7 +2171,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/legs/{leg_id}/dtmf": {
@@ -2048,7 +2198,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/legDTMF"
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "delete": {
     "parameters": [
@@ -2067,7 +2220,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/legs/{leg_id}/asr": {
@@ -2091,7 +2247,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/legASR"
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    },
    "delete": {
     "parameters": [
@@ -2110,7 +2269,10 @@
        }
       }
      }
-    }
+    },
+    "tags": [
+     "legs"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/rtc": {
@@ -2127,7 +2289,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/rtcNewRequestType"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}/rtc": {
@@ -2144,7 +2309,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/rtcNewRequest"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/rtc/{rtc_id}/offer": {
@@ -2164,7 +2332,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/rtcOfferRequest"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/rtc/{rtc_id}/answer": {
@@ -2184,7 +2355,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/rtcAnswerRequest"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/rtc/{rtc_id}": {
@@ -2207,7 +2381,10 @@
      "200": {
       "$ref": "#/components/responses/rtcIdLite"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta2/conversations/{conv_id}/rtc/{rtc_id}": {
@@ -2230,7 +2407,10 @@
      "200": {
       "$ref": "#/components/responses/rtcIdLite"
      }
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   },
   "/beta/conversations/{conv_id}/rtc/{rtc_id}/ice": {
@@ -2250,7 +2430,10 @@
     },
     "requestBody": {
      "$ref": "#/components/requestBodies/rtcIceRequest"
-    }
+    },
+    "tags": [
+     "conversations"
+    ]
    }
   }
  },
