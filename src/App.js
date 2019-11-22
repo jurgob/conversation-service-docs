@@ -1,8 +1,9 @@
 import React from "react";
 import {HashRouter, Route, Link } from "react-router-dom";
-import specs from './openapi_specs/specs.openapi_v1.json';
-   import SwaggerUI from "swagger-ui-react"
-  import "swagger-ui-react/swagger-ui.css"
+// import specs from './openapi_specs/specs.openapi_v1.json';
+import specs from './openapi_specs/specs.openapi_all.json';
+import SwaggerUI from "swagger-ui-react";
+import "swagger-ui-react/swagger-ui.css";
 import { RedocStandalone } from 'redoc';
 
 
