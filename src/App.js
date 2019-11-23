@@ -12,8 +12,8 @@ import './App.css'
 function App() {
   return (
     <HashRouter basename='/' >
-      <div>
-        <Header />
+      <Header />
+      <div class="mainbody" >
         <Route exact path="/" component={Home} />
         <Route exact path="/rowopenapi" component={RowOpenApi} />
         <Route path="/openapiui" component={OpenApiUi} />
@@ -32,6 +32,7 @@ function Custom() {
 
 function Home() {
   return <div>
+    <h1>Conversation Service Internal Documetation</h1>
     <p>
       go to the : <Link to="/openapiui">specs</Link> to see the open api specs
     </p>
@@ -56,7 +57,7 @@ function Redoc() {
 
 function Header() {
   return (
-    <ul>
+    <ul class="header-nav" >
       <li>
         <Link to="/">Home</Link>
       </li>
