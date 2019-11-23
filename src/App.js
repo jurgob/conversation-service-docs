@@ -5,7 +5,8 @@ import specs from './openapi_specs/specs.openapi_all.json';
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 import { RedocStandalone } from 'redoc';
-import CustomOpenApi from './CustomOpenApi'
+import CustomOpenApi from './CustomOpenApi';
+import SequenceDiagrams from './SequenceDiagrams';
 import './App.css'
 
 
@@ -16,9 +17,11 @@ function App() {
       <div class="mainbody" >
         <Route exact path="/" component={Home} />
         <Route exact path="/rowopenapi" component={RowOpenApi} />
+        <Route path="/sequencediagram" component={SequenceDiagramPage} />
         <Route path="/openapiui" component={OpenApiUi} />
         <Route path="/custom" component={Custom} />
         <Route path="/redoc" component={Redoc} />
+        
       </div>
     </HashRouter>
   );
@@ -46,6 +49,10 @@ function RowOpenApi() {
   return <pre style={{background: "#dfdfdf", padding: "10px"}} >{JSON.stringify(specs, null, '  ')} </pre>;
 }
 
+function SequenceDiagramPage() {
+  return <SequenceDiagrams />;
+}
+
 function OpenApiUi() {
   return <SwaggerUI docExpansion="list" spec={specs} />;
 }
@@ -66,6 +73,9 @@ function Header() {
       </li>
       <li>
         <Link to="/custom">Custom Webhook specs</Link>
+      </li>
+      <li>
+        <Link to="/sequencediagram">Web Sequence Diagram</Link>
       </li>
       <li>
         <Link to="/rowopenapi">Row Open Api</Link>
