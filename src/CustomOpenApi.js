@@ -8,7 +8,7 @@ function objectCompactView(openapiObject){
 		return openapiObject
 	else if(openapiObject.type && openapiObject.type !== "object")
 		return `<${openapiObject.type}>`
-	else if(openapiObject.$ref) 
+	else if(openapiObject.$ref)
 		return `<${openapiObject.$ref}>`
 	else if(openapiObject.properties)
 		return objectCompactView(openapiObject.properties)
@@ -20,7 +20,7 @@ function objectCompactView(openapiObject){
 		let res = {}
 		Object.keys(openapiObject)
 			.forEach(propKey => {
-				res[propKey] = objectCompactView(openapiObject[propKey]) 
+				res[propKey] = objectCompactView(openapiObject[propKey])
 			})
 		return res
 	}
@@ -54,10 +54,10 @@ function eventCompactView(eventRow){
 	const newBody =eventRes.body
 	delete event.body
 
-	
+
 	eventRes.type = type;
 	eventRes.body = newBody;
-	
+
 
 	// Object.keys(event)
 	// 	.filter(key =>key !== "type")
@@ -69,18 +69,45 @@ function eventCompactView(eventRow){
 	// if(event.body && event.body.properties){
 	// 	event.body = event.body.properties
 	// }
-	
+
 	// eventRes.originalEvent = eventRow
 	return eventRes;
 }
 
+function getRefs(specs){
+	if(typeof specs !== "object" )
+		return undefined
+	if(specs["$ref"])
+		return { [specs["$ref"]] : true }
+	return Object.values(specs)
+		.reduce(
+			(acc, spec) => ({
+				...acc,
+				...getRefs(spec)
+			}),
+			{}
+		)
+}
+
+function getSchemaSpec(resource, schema){
+	const res_name = resource.split('/').slice(-1).pop()
+	return schema['components']['schemas'][res_name ]
+	//path = "#/components/schemas/session_id".split('/').splice(1)
+}
+
 function CustomOpenApi({spec}) {
-const webhooks_events = spec.components.schemas.callback.oneOf.map(({properties}) =>  properties)
+	const webhooks_events = spec.components.schemas.callback.oneOf.map(({properties}) =>  properties)
+
+  	const refs = Object.keys(getRefs(webhooks_events))
+//   return (
+// 		<pre>{JSON.stringify(getSchemaSpec(refs[0], spec), null, ' ')}</pre>
+//   )
   return (
 	<div>
 		<h1>CS events</h1>
 		<p>CS events, we document those here cuz openapi output may be confusint</p>
-		<h2>Webhooks events</h2>
+		<p>there are two sections: <b>Webhooks events list</b> and <b>Object legend</b> (scroll down) </p>
+		<h2>Webhooks events list</h2>
 		<p>if you enable the rtc capability in your application, you will start to receive the following events:</p>
 		<div>
 			{webhooks_events
@@ -89,7 +116,7 @@ const webhooks_events = spec.components.schemas.callback.oneOf.map(({properties}
 					const compactEvent = eventCompactView(event)
 					const exampleJson = OpenAPISampler.sample({type:"object", properties: event}, {skipReadOnly: false}, spec)
 
-					return ( 
+					return (
 						<div>
 							<h3 style={{borderBottom: "1px solid #ddd"}}>{compactEvent.type}</h3>
 							<div style = {{display: "inline-block",verticalAlign:"top", marginRight: "30px"}} >
@@ -104,14 +131,25 @@ const webhooks_events = spec.components.schemas.callback.oneOf.map(({properties}
 								<h4>OpenApi </h4>
 								<ReactJsonSyntaxHighlighter obj={event} />
 							</div>
-							
+
 						</div>
 					)
 			})}
-			
 		</div>
-	</div>  
-	
+		<h2>Object legend</h2>
+		<div>
+			{refs.map(refpath => {
+				return (
+					<div>
+						<h3>{refpath}</h3>
+						<ReactJsonSyntaxHighlighter obj={getSchemaSpec(refpath, spec)} />
+					</div>
+				)
+				
+			})}
+		</div>
+	</div>
+
   );
 }
 
