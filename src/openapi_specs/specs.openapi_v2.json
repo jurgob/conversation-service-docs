@@ -42,7 +42,10 @@
                     "200": {
                         "$ref": "#/components/responses/user_list"
                     }
-                }
+                },
+                "tags": [
+                    "users"
+                ]
             }
         },
         "/users/{user_id}/conversations": {
@@ -74,7 +77,10 @@
                     "200": {
                         "$ref": "#/components/responses/user_conversations_list"
                     }
-                }
+                },
+                "tags": [
+                    "users"
+                ]
             }
         },
         "/conversations": {
@@ -106,10 +112,13 @@
                     "200": {
                         "$ref": "#/components/responses/conversation_list"
                     }
-                }
+                },
+                "tags": [
+                    "conversations"
+                ]
             }
         },
-        "/conversations/{conv_id}": {
+        "/conversations/{conversation_id}": {
             "get": {
                 "summary": "Retrieve a conversation",
                 "x-swagger-router-controller": "retrieveConversation",
@@ -123,7 +132,10 @@
                     "200": {
                         "$ref": "#/components/responses/conversation_2"
                     }
-                }
+                },
+                "tags": [
+                    "conversations"
+                ]
             }
         },
         "/devices/{device_id}": {
@@ -161,10 +173,13 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/device_registation_v2"
                 },
-                "summary": "Update devices"
+                "summary": "Update devices",
+                "tags": [
+                    "devices"
+                ]
             }
         },
-        "/conversations/{conv_id}/members": {
+        "/conversations/{conversation_id}/members": {
             "get": {
                 "summary": "List members",
                 "x-swagger-router-controller": "members",
@@ -187,10 +202,13 @@
                     "200": {
                         "$ref": "#/components/responses/member_list"
                     }
-                }
+                },
+                "tags": [
+                    "conversations members"
+                ]
             }
         },
-        "/conversations/{conv_id}/members/{member_id}": {
+        "/conversations/{conversation_id}/members/{member_id}": {
             "get": {
                 "summary": "Retrieve a member",
                 "x-swagger-router-controller": "members",
@@ -214,10 +232,13 @@
                             }
                         }
                     }
-                }
+                },
+                "tags": [
+                    "conversations members"
+                ]
             }
         },
-        "/conversations/{conv_id}/events": {
+        "/conversations/{conversation_id}/events": {
             "get": {
                 "summary": "List events",
                 "x-swagger-router-controller": "getEvents",
@@ -249,10 +270,13 @@
                     "200": {
                         "$ref": "#/components/responses/event_list"
                     }
-                }
+                },
+                "tags": [
+                    "conversations"
+                ]
             }
         },
-        "/conversations/{conv_id}/events/{event_id}": {
+        "/conversations/{conversation_id}/events/{event_id}": {
             "delete": {
                 "summary": "Delete an event",
                 "x-swagger-router-controller": "deleteEvent",
@@ -273,7 +297,10 @@
                         "description": "",
                         "content": {}
                     }
-                }
+                },
+                "tags": [
+                    "conversations"
+                ]
             }
         },
         "/legs": {
@@ -308,10 +335,13 @@
                     "200": {
                         "$ref": "#/components/responses/leg_list"
                     }
-                }
+                },
+                "tags": [
+                    "legs"
+                ]
             }
         },
-        "/conversations/{conv_id}/rtc": {
+        "/conversations/{conversation_id}/rtc": {
             "post": {
                 "parameters": [
                     {
@@ -326,10 +356,13 @@
                 "requestBody": {
                     "$ref": "#/components/requestBodies/rtcNewRequest"
                 },
-                "summary": "Create rtc"
+                "summary": "Create rtc",
+                "tags": [
+                    "conversations"
+                ]
             }
         },
-        "/conversations/{conv_id}/rtc/{rtc_id}": {
+        "/conversations/{conversation_id}/rtc/{rtc_id}": {
             "delete": {
                 "parameters": [
                     {
@@ -350,7 +383,10 @@
                         "$ref": "#/components/responses/rtcIdLite"
                     }
                 },
-                "summary": "Delete rtc"
+                "summary": "Delete rtc",
+                "tags": [
+                    "conversations"
+                ]
             }
         },
         "/v2/applications": {
@@ -595,7 +631,10 @@
                         }
                     }
                 },
-                "summary": "Create applications"
+                "summary": "Create applications",
+                "tags": [
+                    "webhooks"
+                ]
             }
         },
         "/v2/applications/{id}": {
@@ -852,13 +891,18 @@
                         }
                     }
                 },
-                "summary": "Update applications"
+                "summary": "Update applications",
+                "tags": [
+                    "webhooks"
+                ]
             }
         }
     },
     "components": {
         "schemas": {
             "conversation_id": {
+                "description": "The unique identifier for this conversation",
+                "example": "CON-63f61863-4a51-4f6b-86e1-46edebio0391",
                 "type": "string"
             },
             "name_conversation": {
@@ -5716,7 +5760,9 @@
                 }
             },
             "conversation_id": {
-                "name": "conv_id",
+                "description": "Conversation ID",
+                "x-example": "CON-f972836a-550f-45fa-956c-12a2ab5b7d22",
+                "name": "conversation_id",
                 "in": "path",
                 "schema": {
                     "type": "string"

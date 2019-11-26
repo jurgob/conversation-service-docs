@@ -22,32 +22,32 @@ Object.entries(spec_result.paths)
 		delete  spec_result.paths[path]
 	})
 
-//add tags
-function fromPathToTag(path){
-		let tag = "misc"
-		if(path.includes('/applications'))
-			tag = "webhooks"
-		else if(path.includes('/members'))
-			tag = "conversations members"
-		else if(path.split && path.split('/')[2])
-			tag = path.split('/')[2]
-		return tag
-}
+// //add tags
+// function fromPathToTag(path){
+// 		let tag = "misc"
+// 		if(path.includes('/applications'))
+// 			tag = "webhooks"
+// 		else if(path.includes('/members'))
+// 			tag = "conversations members"
+// 		else if(path.split && path.split('/')[2])
+// 			tag = path.split('/')[2]
+// 		return tag
+// }
 
 
-Object.entries(spec_result.paths)
-	//.map(([path, path_verbs]) => path)
-	.forEach(([path, path_verbs]) => {
+// Object.entries(spec_result.paths)
+// 	//.map(([path, path_verbs]) => path)
+// 	.forEach(([path, path_verbs]) => {
 	
-		const tag = fromPathToTag(path);
+// 		const tag = fromPathToTag(path);
 
-		Object.keys(path_verbs)
-			.forEach(verb => {
-				spec_result.paths[path][verb].tags = [tag]	
-			})
-		// spec_result.paths[path]
-		// console.log(path, tag)
-	})
+// 		Object.keys(path_verbs)
+// 			.forEach(verb => {
+// 				spec_result.paths[path][verb].tags = [tag]	
+// 			})
+// 		// spec_result.paths[path]
+// 		// console.log(path, tag)
+// 	})
 
 
 
