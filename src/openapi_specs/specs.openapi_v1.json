@@ -2137,6 +2137,8 @@
                 "type": "string"
             },
             "rtc_id": {
+                "description": "Rtc ID",
+                "example": "RTC-63f61863-4a51-4f6b-86e1-46edebio0391",
                 "type": "string"
             },
             "member_id": {
@@ -2145,8 +2147,10 @@
                 "type": "string"
             },
             "nullable_member_id": {
-                "type": "string",
-                "nullable": true
+                "description": "Member ID",
+                "nullable": true,
+                "example": "MEM-63f61863-4a51-4f6b-86e1-46edebio0391",
+                "type": "string"
             },
             "member_state": {
                 "description": "The state that the member is in. Possible values are `invited`, `joined`, `left`, or `unknown`",
@@ -2169,6 +2173,8 @@
                 ]
             },
             "member_name": {
+                "description": "Member Name",
+                "example": "some_name",
                 "type": "string"
             },
             "properties": {
@@ -2377,6 +2383,8 @@
                 ]
             },
             "full_direction": {
+                "description": "Full direction",
+                "example": "inbound",
                 "type": "string",
                 "enum": [
                     "inbound",
@@ -3058,6 +3066,8 @@
                 ]
             },
             "leg_status": {
+                "description": "Leg status",
+                "example": "answered",
                 "type": "string",
                 "enum": [
                     "started",
@@ -3130,6 +3140,8 @@
                 ]
             },
             "application_id": {
+                "description": "Application ID",
+                "example": "ed9b091a-425b-4bd4-8457-20e531cb31de",
                 "type": "string"
             },
             "knocker_timestamp": {
@@ -3340,6 +3352,8 @@
                 "type": "string"
             },
             "session_id": {
+                "description": "Session ID",
+                "example": "SES-63f61863-4a51-4f6b-86e1-46edebio0391",
                 "type": "string"
             },
             "leg_list": {
@@ -3363,8 +3377,10 @@
                 }
             },
             "audio_error": {
-                "type": "string",
-                "nullable": true
+                "description": "Audio error",
+                "nullable": true,
+                "example": "some_audio_error",
+                "type": "string"
             },
             "user_channel": {
                 "type": "array",
@@ -3376,6 +3392,8 @@
                 "type": "object"
             },
             "string_uri": {
+                "description": "String URI",
+                "example": "https://example.com/",
                 "type": "string"
             },
             "channel_lite": {
@@ -3413,8 +3431,9 @@
                 ]
             },
             "dtmf_pattern": {
-                "type": "string",
-                "pattern": "^([abcdABCD0-9*#pP])+$"
+                "pattern": "^([abcdABCD0-9*#pP])+$",
+                "example": "abcd11",
+                "type": "string"
             },
             "channel_to": {
                 "oneOf": [
