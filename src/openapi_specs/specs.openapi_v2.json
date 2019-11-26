@@ -20,38 +20,6 @@
             "bearerAuth": []
         }
     ],
-    "x-groups": {
-        "conversation": {
-            "name": "Conversation",
-            "order": 1,
-            "description": "A conversation is a shared core component that Nexmo APIs rely on. Conversations happen over multiple mediums and and can have associated Users through Memberships."
-        },
-        "user": {
-            "name": "User",
-            "order": 2,
-            "description": "The concept of a user exists in Nexmo APIs, you can associate one with a user in your own application if you choose. A user can have multiple memberships to conversations and can communicate with other users through various different mediums."
-        },
-        "member": {
-            "name": "Member",
-            "order": 3,
-            "description": "Memberships connect users with conversations. Each membership has one conversation and one user however a user can have many memberships to conversations just as conversations can have many members."
-        },
-        "event": {
-            "name": "Event",
-            "order": 4,
-            "description": "Events are actions that occur within a conversation. Examples of this includes: Text events from members, or invite events from users"
-        },
-        "leg": {
-            "name": "Leg",
-            "order": 5,
-            "description": "A leg can be a video call, IP call, or PSTN call that users participate in using multiple platforms. With this endpoint you can retrieve the details about all of the legs that took place in your application."
-        },
-        "rtc": {
-            "name": "Rtc",
-            "order": 6,
-            "description": "Rtc actions. Any rtc action related (like starting a new rtc connection)."
-        }
-    },
     "openapi": "3.0.0",
     "paths": {
         "/users": {
@@ -192,7 +160,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/device_registation_v2"
-                }
+                },
+                "summary": "Update devices"
             }
         },
         "/conversations/{conv_id}/members": {
@@ -356,7 +325,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/rtcNewRequest"
-                }
+                },
+                "summary": "Create rtc"
             }
         },
         "/conversations/{conv_id}/rtc/{rtc_id}": {
@@ -379,7 +349,8 @@
                     "200": {
                         "$ref": "#/components/responses/rtcIdLite"
                     }
-                }
+                },
+                "summary": "Delete rtc"
             }
         },
         "/v2/applications": {
@@ -623,7 +594,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Create applications"
             }
         },
         "/v2/applications/{id}": {
@@ -631,13 +603,13 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the application",
+                        "example": "78d335fa323d01149c3dd6f0d48968cf",
                         "schema": {
                             "type": "string"
-                        },
-                        "required": true,
-                        "in": "path",
-                        "description": "",
-                        "example": "some_id"
+                        }
                     }
                 ],
                 "operationId": "updateApplication",
@@ -879,7 +851,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Update applications"
             }
         }
     },

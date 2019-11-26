@@ -49,4 +49,7 @@ Object.entries(spec_result.paths)
 		// console.log(path, tag)
 	})
 
-console.log(JSON.stringify(spec_result, ' ', ' '))
+
+
+// console.log(JSON.stringify(spec_result, ' ', ' '))
+fs.writeFileSync('specs.openapi_all.json', JSON.stringify(spec_result, ' ', ' '));

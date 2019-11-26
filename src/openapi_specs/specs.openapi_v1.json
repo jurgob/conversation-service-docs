@@ -20,38 +20,6 @@
             "bearerAuth": []
         }
     ],
-    "x-groups": {
-        "conversation": {
-            "name": "Conversation",
-            "order": 1,
-            "description": "A conversation is a shared core component that Nexmo APIs rely on. Conversations happen over multiple mediums and and can have associated Users through Memberships."
-        },
-        "user": {
-            "name": "User",
-            "order": 2,
-            "description": "The concept of a user exists in Nexmo APIs, you can associate one with a user in your own application if you choose. A user can have multiple memberships to conversations and can communicate with other users through various different mediums."
-        },
-        "member": {
-            "name": "Member",
-            "order": 3,
-            "description": "Memberships connect users with conversations. Each membership has one conversation and one user however a user can have many memberships to conversations just as conversations can have many members."
-        },
-        "event": {
-            "name": "Event",
-            "order": 4,
-            "description": "Events are actions that occur within a conversation. Examples of this includes: Text events from members, or invite events from users"
-        },
-        "leg": {
-            "name": "Leg",
-            "order": 5,
-            "description": "A leg can be a video call, IP call, or PSTN call that users participate in using multiple platforms. With this endpoint you can retrieve the details about all of the legs that took place in your application."
-        },
-        "rtc": {
-            "name": "Rtc",
-            "order": 6,
-            "description": "Rtc actions. Any rtc action related (like starting a new rtc connection)."
-        }
-    },
     "openapi": "3.0.0",
     "paths": {
         "/users": {
@@ -291,7 +259,7 @@
                 }
             }
         },
-        "/conversations/{conv_id}": {
+        "/conversations/{conversation_id}": {
             "put": {
                 "parameters": [
                     {
@@ -305,7 +273,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/conversation"
-                }
+                },
+                "summary": "Update conversations"
             },
             "get": {
                 "parameters": [
@@ -317,7 +286,8 @@
                     "200": {
                         "$ref": "#/components/responses/conversation"
                     }
-                }
+                },
+                "summary": "Get conversations"
             },
             "delete": {
                 "parameters": [
@@ -330,7 +300,8 @@
                         "description": "",
                         "content": {}
                     }
-                }
+                },
+                "summary": "Delete conversations"
             }
         },
         "/devices/{device_id}": {
@@ -367,7 +338,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/device_registation"
-                }
+                },
+                "summary": "Update devices"
             },
             "delete": {
                 "parameters": [
@@ -380,10 +352,11 @@
                         "description": "",
                         "content": {}
                     }
-                }
+                },
+                "summary": "Delete devices"
             }
         },
-        "/conversations/{conv_id}/members": {
+        "/conversations/{conversation_id}/members": {
             "post": {
                 "parameters": [
                     {
@@ -599,7 +572,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Create members"
             },
             "get": {
                 "parameters": [
@@ -618,10 +592,11 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Get members"
             }
         },
-        "/conversations/{conv_id}/members/{member_id}": {
+        "/conversations/{conversation_id}/members/{member_id}": {
             "get": {
                 "parameters": [
                     {
@@ -642,7 +617,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Get members"
             },
             "put": {
                 "parameters": [
@@ -701,7 +677,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Update members"
             },
             "delete": {
                 "parameters": [
@@ -730,10 +707,12 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete members"
             }
         },
         "/knocking": {
+            "summary": "Create knocking",
             "post": {
                 "parameters": [],
                 "responses": {
@@ -808,10 +787,11 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete knocking"
             }
         },
-        "/conversations/{conv_id}/events": {
+        "/conversations/{conversation_id}/events": {
             "post": {
                 "parameters": [
                     {
@@ -825,7 +805,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/events"
-                }
+                },
+                "summary": "Create events"
             },
             "get": {
                 "parameters": [
@@ -843,10 +824,11 @@
                     "200": {
                         "$ref": "#/components/responses/eventsListResponse"
                     }
-                }
+                },
+                "summary": "Get events"
             }
         },
-        "/conversations/{conv_id}/events/{event_id}": {
+        "/conversations/{conversation_id}/events/{event_id}": {
             "get": {
                 "parameters": [
                     {
@@ -860,7 +842,8 @@
                     "200": {
                         "$ref": "#/components/responses/eventsResponse"
                     }
-                }
+                },
+                "summary": "Get events"
             },
             "delete": {
                 "parameters": [
@@ -879,7 +862,8 @@
                         "description": "",
                         "content": {}
                     }
-                }
+                },
+                "summary": "Delete events"
             }
         },
         "/sessions": {
@@ -892,7 +876,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/session"
-                }
+                },
+                "summary": "Create sessions"
             }
         },
         "/sessions/{session_id}": {
@@ -916,7 +901,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Update sessions"
             },
             "delete": {
                 "parameters": [
@@ -936,7 +922,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete sessions"
             }
         },
         "/capis/{capi_id}": {
@@ -966,7 +953,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete capis"
             }
         },
         "/legs": {
@@ -1066,7 +1054,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Get legs"
             },
             "put": {
                 "parameters": [
@@ -1088,7 +1077,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/legModify"
-                }
+                },
+                "summary": "Update legs"
             },
             "delete": {
                 "summary": "Delete a leg",
@@ -1128,7 +1118,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/legRecord"
-                }
+                },
+                "summary": "Update recording"
             },
             "delete": {
                 "parameters": [
@@ -1150,7 +1141,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete recording"
             }
         },
         "/legs/{leg_id}/stream": {
@@ -1174,7 +1166,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/legStream"
-                }
+                },
+                "summary": "Update stream"
             },
             "delete": {
                 "parameters": [
@@ -1193,7 +1186,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete stream"
             }
         },
         "/legs/{leg_id}/talk": {
@@ -1217,7 +1211,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/legTalk"
-                }
+                },
+                "summary": "Update talk"
             },
             "delete": {
                 "parameters": [
@@ -1236,7 +1231,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete talk"
             }
         },
         "/legs/{leg_id}/dtmf": {
@@ -1260,7 +1256,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/legDTMF"
-                }
+                },
+                "summary": "Update dtmf"
             },
             "delete": {
                 "parameters": [
@@ -1279,7 +1276,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete dtmf"
             }
         },
         "/legs/{leg_id}/asr": {
@@ -1303,7 +1301,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/legASR"
-                }
+                },
+                "summary": "Update asr"
             },
             "delete": {
                 "parameters": [
@@ -1322,10 +1321,11 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Delete asr"
             }
         },
-        "/conversations/{conv_id}/rtc": {
+        "/conversations/{conversation_id}/rtc": {
             "post": {
                 "parameters": [
                     {
@@ -1339,10 +1339,11 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/rtcNewRequestType"
-                }
+                },
+                "summary": "Create rtc"
             }
         },
-        "/conversations/{conv_id}/rtc/{rtc_id}/offer": {
+        "/conversations/{conversation_id}/rtc/{rtc_id}/offer": {
             "post": {
                 "parameters": [
                     {
@@ -1359,10 +1360,11 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/rtcOfferRequest"
-                }
+                },
+                "summary": "Create offer"
             }
         },
-        "/conversations/{conv_id}/rtc/{rtc_id}/answer": {
+        "/conversations/{conversation_id}/rtc/{rtc_id}/answer": {
             "post": {
                 "parameters": [
                     {
@@ -1379,10 +1381,11 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/rtcAnswerRequest"
-                }
+                },
+                "summary": "Create answer"
             }
         },
-        "/conversations/{conv_id}/rtc/{rtc_id}": {
+        "/conversations/{conversation_id}/rtc/{rtc_id}": {
             "delete": {
                 "parameters": [
                     {
@@ -1402,10 +1405,11 @@
                     "200": {
                         "$ref": "#/components/responses/rtcIdLite"
                     }
-                }
+                },
+                "summary": "Delete rtc"
             }
         },
-        "/conversations/{conv_id}/rtc/{rtc_id}/ice": {
+        "/conversations/{conversation_id}/rtc/{rtc_id}/ice": {
             "post": {
                 "parameters": [
                     {
@@ -1422,7 +1426,8 @@
                 },
                 "requestBody": {
                     "$ref": "#/components/requestBodies/rtcIceRequest"
-                }
+                },
+                "summary": "Create ice"
             }
         },
         "/v2/applications": {
@@ -1666,7 +1671,8 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Create applications"
             }
         },
         "/v2/applications/{id}": {
@@ -1674,13 +1680,13 @@
                 "parameters": [
                     {
                         "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "The ID of the application",
+                        "example": "78d335fa323d01149c3dd6f0d48968cf",
                         "schema": {
                             "type": "string"
-                        },
-                        "required": true,
-                        "in": "path",
-                        "description": "",
-                        "example": "some_id"
+                        }
                     }
                 ],
                 "operationId": "updateApplication",
@@ -1922,15 +1928,14 @@
                             }
                         }
                     }
-                }
+                },
+                "summary": "Update applications"
             }
         }
     },
     "components": {
         "schemas": {
             "conversation_id": {
-                "description": "The unique identifier for this conversation",
-                "example": "CON-63f61863-4a51-4f6b-86e1-46edebio0391",
                 "type": "string"
             },
             "name_conversation": {
@@ -1971,6 +1976,7 @@
             },
             "member_state": {
                 "description": "The state that the member is in. Possible values are `invited`, `joined`, `left`, or `unknown`",
+                "example": "INVITED",
                 "type": "string",
                 "enum": [
                     "INVITED",
@@ -6787,9 +6793,7 @@
                 }
             },
             "conversation_id": {
-                "description": "Conversation ID",
-                "x-example": "CON-f972836a-550f-45fa-956c-12a2ab5b7d22",
-                "name": "conv_id",
+                "name": "conversation_id",
                 "in": "path",
                 "schema": {
                     "type": "string"
