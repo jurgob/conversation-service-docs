@@ -6,9 +6,10 @@ const OpenAPISampler = require('openapi-sampler');
 function objectCompactView(openapiObject){
 	if(typeof openapiObject !== "object")
 		return openapiObject
-	else if(openapiObject.type && openapiObject.type !== "object")
-		return `<${openapiObject.type}>`
-	else if(openapiObject.$ref)
+	else if(openapiObject.type && openapiObject.type !== "object") {
+		const format = openapiObject.format ? `(${openapiObject.format})` : ``;
+		return `<${openapiObject.type}${format}>`
+	} else if(openapiObject.$ref)
 		return `<${openapiObject.$ref}>`
 	else if(openapiObject.properties)
 		return objectCompactView(openapiObject.properties)
@@ -42,7 +43,7 @@ function eventCompactView(eventRow){
 	//set type
 	let type = "notype!"
 	if(event && event.type){
-		if(eventRow.type.pattern)
+		if(eventRow.type.pattern && eventRow.type.pattern.includes("custom") )
 			type = "custom:*"
 		if(eventRow.type.enum)
 			type = eventRow.type.enum[0]
