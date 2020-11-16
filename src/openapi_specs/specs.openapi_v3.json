@@ -1,7 +1,7 @@
 {
     "servers": [
         {
-            "url": "https://api.nexmo.com/beta"
+            "url": "https://api.nexmo.com/v0.3"
         }
     ],
     "info": {
