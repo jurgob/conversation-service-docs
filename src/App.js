@@ -24,6 +24,7 @@ function App() {
         <Route path="/custom" component={Custom} />
         <Route path="/customv3" component={CustomV3} />
         <Route path="/redoc" component={Redoc} />
+        <Route path="/redocv3" component={RedocV3} />
         
       </div>
     </HashRouter>
@@ -74,6 +75,10 @@ function Redoc() {
   return <RedocStandalone spec={specs} />;
 }
 
+function RedocV3() {
+  return <RedocStandalone spec={specsV3} />;
+}
+
 
 function Header() {
   return (
@@ -101,6 +106,9 @@ function Header() {
       </li>
       <li>
         <Link to="/redoc">Redoc</Link>
+      </li>
+      <li>
+        <Link to="/redocv3">Redoc V3</Link>
       </li>
       <li>
         <a href="https://github.com/jurgob/conversation-service-docs">Git hub project</a>
