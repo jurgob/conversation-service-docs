@@ -587,7 +587,11 @@
     "summary": "List users",
     "x-swagger-router-controller": "users",
     "x-group": "user",
-    "parameters": [],
+    "parameters": [
+     {
+      "$ref": "#/components/parameters/name"
+     }
+    ],
     "responses": {
      "200": {
       "description": "",
@@ -704,6 +708,9 @@
     "x-swagger-router-controller": "users",
     "x-group": "user",
     "parameters": [
+     {
+      "$ref": "#/components/parameters/name"
+     },
      {
       "$ref": "#/components/parameters/page_size"
      },
@@ -2541,6 +2548,122 @@
     "tags": [
      "conversations members"
     ]
+   }
+  },
+  "/beta/conversations/{conversation_id}/members/me": {
+   "get": {
+    "parameters": [
+     {
+      "$ref": "#/components/parameters/conversation_id"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/member"
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/error"
+     },
+     "401": {
+      "$ref": "#/components/responses/error"
+     },
+     "403": {
+      "$ref": "#/components/responses/error"
+     },
+     "404": {
+      "$ref": "#/components/responses/error"
+     },
+     "405": {
+      "$ref": "#/components/responses/error"
+     },
+     "406": {
+      "$ref": "#/components/responses/error"
+     },
+     "409": {
+      "$ref": "#/components/responses/error"
+     },
+     "415": {
+      "$ref": "#/components/responses/error"
+     },
+     "422": {
+      "$ref": "#/components/responses/error"
+     },
+     "429": {
+      "$ref": "#/components/responses/error"
+     },
+     "500": {
+      "$ref": "#/components/responses/error"
+     }
+    },
+    "tags": [
+     "conversations members"
+    ],
+    "summary": "Get me"
+   }
+  },
+  "/beta2/conversations/{conversation_id}/members/me": {
+   "get": {
+    "parameters": [
+     {
+      "$ref": "#/components/parameters/conversation_id"
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/member"
+        }
+       }
+      }
+     },
+     "400": {
+      "$ref": "#/components/responses/error"
+     },
+     "401": {
+      "$ref": "#/components/responses/error"
+     },
+     "403": {
+      "$ref": "#/components/responses/error"
+     },
+     "404": {
+      "$ref": "#/components/responses/error"
+     },
+     "405": {
+      "$ref": "#/components/responses/error"
+     },
+     "406": {
+      "$ref": "#/components/responses/error"
+     },
+     "409": {
+      "$ref": "#/components/responses/error"
+     },
+     "415": {
+      "$ref": "#/components/responses/error"
+     },
+     "422": {
+      "$ref": "#/components/responses/error"
+     },
+     "429": {
+      "$ref": "#/components/responses/error"
+     },
+     "500": {
+      "$ref": "#/components/responses/error"
+     }
+    },
+    "tags": [
+     "conversations members"
+    ],
+    "summary": "Get me"
    }
   },
   "/beta/conversations/{conversation_id}/members/{member_id}": {
@@ -7893,7 +8016,7 @@
       "oneOf": [
        {
         "type": "string",
-        "pattern": "^(ws|wss):\\/\\/[a-zA-Z0-9~#%@&-_?\\\\\\/.,:;)(\\][]*$"
+        "pattern": "^(ws|wss):\\/\\/[a-zA-Z0-9~#%@&-_?\\\\/.,:;)(\\][]*$"
        },
        {
         "type": "string"
@@ -8297,6 +8420,56 @@
      "asr_id"
     ]
    },
+   "asr_record_done": {
+    "type": "object",
+    "properties": {
+     "error": {
+      "type": "string",
+      "nullable": true
+     },
+     "asr_id": {
+      "$ref": "#/components/schemas/asr_id"
+     },
+     "call_id": {
+      "$ref": "#/components/schemas/leg_id"
+     },
+     "destination_url": {
+      "type": "string",
+      "format": "uri"
+     },
+     "format": {
+      "type": "string",
+      "enum": [
+       "mp3",
+       "wav"
+      ]
+     },
+     "start_time": {
+      "$ref": "#/components/schemas/iso_date"
+     },
+     "end_time": {
+      "$ref": "#/components/schemas/iso_date"
+     },
+     "size": {
+      "type": "number",
+      "format": "float"
+     },
+     "media_service_uuid": {
+      "$ref": "#/components/schemas/uuid"
+     }
+    },
+    "required": [
+     "error",
+     "asr_id",
+     "call_id",
+     "destination_url",
+     "format",
+     "start_time",
+     "end_time",
+     "size",
+     "media_service_uuid"
+    ]
+   },
    "asr_result": {
     "type": "object",
     "properties": {
@@ -8593,7 +8766,7 @@
        {
         "type": "string",
         "maxLength": 200,
-        "pattern": "^(ws|wss):\\/\\/[a-zA-Z0-9~#%@&-_?\\\\\\/.,:;)(\\][]*$"
+        "pattern": "^(ws|wss):\\/\\/[a-zA-Z0-9~#%@&-_?\\\\/.,:;)(\\][]*$"
        },
        {
         "type": "string",
@@ -8712,6 +8885,35 @@
      "id",
      "name"
     ]
+   },
+   "from_user": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "$ref": "#/components/schemas/user_id"
+     },
+     "name": {
+      "type": "string"
+     },
+     "display_name": {
+      "$ref": "#/components/schemas/display_name_v03"
+     },
+     "image_url": {
+      "type": "string",
+      "format": "uri"
+     },
+     "custom_data": {
+      "type": "object"
+     }
+    }
+   },
+   "event_embedded": {
+    "type": "object",
+    "properties": {
+     "from_user": {
+      "$ref": "#/components/schemas/from_user"
+     }
+    }
    },
    "ApplicationResponse": {
     "properties": {
@@ -8911,6 +9113,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -8977,6 +9182,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -9024,6 +9232,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -9098,6 +9309,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -9145,6 +9359,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -9175,6 +9392,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -9333,6 +9553,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -9380,6 +9603,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -9410,6 +9636,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -9452,6 +9681,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -9492,6 +9724,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -9563,6 +9798,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "to": {
         "$ref": "#/components/schemas/member_id"
        }
@@ -9615,6 +9853,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "to": {
         "$ref": "#/components/schemas/member_id"
        }
@@ -9649,6 +9890,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -9698,6 +9942,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -9745,6 +9992,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -9794,6 +10044,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -9841,6 +10094,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -9919,6 +10175,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -9966,6 +10225,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -10028,6 +10290,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -10071,6 +10336,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -10100,6 +10368,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -10152,6 +10423,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -10342,6 +10616,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -10428,6 +10705,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -10541,6 +10821,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -10588,6 +10871,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -10946,6 +11232,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -11026,6 +11315,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -11093,6 +11385,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -11132,6 +11427,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -11173,6 +11471,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -11213,6 +11514,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -11252,6 +11556,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -11315,6 +11622,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -11414,6 +11724,9 @@
          },
          "from": {
           "$ref": "#/components/schemas/nullable_member_id"
+         },
+         "_embedded": {
+          "$ref": "#/components/schemas/event_embedded"
          }
         },
         "required": [
@@ -11552,6 +11865,9 @@
          },
          "from": {
           "$ref": "#/components/schemas/nullable_member_id"
+         },
+         "_embedded": {
+          "$ref": "#/components/schemas/event_embedded"
          }
         },
         "required": [
@@ -11682,6 +11998,9 @@
          "from": {
           "$ref": "#/components/schemas/member_id"
          },
+         "_embedded": {
+          "$ref": "#/components/schemas/event_embedded"
+         },
          "id": {
           "$ref": "#/components/schemas/event_id"
          },
@@ -11718,6 +12037,9 @@
          },
          "from": {
           "$ref": "#/components/schemas/member_id"
+         },
+         "_embedded": {
+          "$ref": "#/components/schemas/event_embedded"
          },
          "body": {
           "type": "object",
@@ -11804,6 +12126,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -11834,6 +12159,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -11890,6 +12218,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -11944,6 +12275,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "type": {
         "type": "string",
@@ -12063,6 +12397,9 @@
        "from": {
         "$ref": "#/components/schemas/member_id"
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "type": {
         "type": "string",
         "enum": [
@@ -12084,6 +12421,68 @@
          },
          "asr": {
           "$ref": "#/components/schemas/asr_done"
+         }
+        },
+        "required": [
+         "channel",
+         "asr"
+        ]
+       }
+      },
+      "required": [
+       "id",
+       "conversation_id",
+       "application_id",
+       "timestamp",
+       "from",
+       "type"
+      ]
+     },
+     {
+      "type": "object",
+      "properties": {
+       "params": {
+        "type": "object"
+       },
+       "id": {
+        "$ref": "#/components/schemas/event_id"
+       },
+       "conversation_id": {
+        "$ref": "#/components/schemas/conversation_id"
+       },
+       "application_id": {
+        "$ref": "#/components/schemas/application_id"
+       },
+       "timestamp": {
+        "$ref": "#/components/schemas/date"
+       },
+       "from": {
+        "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
+       "type": {
+        "type": "string",
+        "enum": [
+         "audio:asr:record:done"
+        ]
+       },
+       "body": {
+        "type": "object",
+        "properties": {
+         "channel": {
+          "oneOf": [
+           {
+            "$ref": "#/components/schemas/channel_lite"
+           },
+           {
+            "$ref": "#/components/schemas/channel"
+           }
+          ]
+         },
+         "asr": {
+          "$ref": "#/components/schemas/asr_record_done"
          }
         },
         "required": [
@@ -12212,6 +12611,9 @@
          "app:knocking:cancel"
         ]
        },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
        "application_id": {
         "$ref": "#/components/schemas/application_id"
        },
@@ -12266,6 +12668,9 @@
         "enum": [
          "app:knocking"
         ]
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        },
        "application_id": {
         "$ref": "#/components/schemas/application_id"
@@ -12508,6 +12913,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -12548,6 +12956,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -12588,6 +12999,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -12628,6 +13042,9 @@
        },
        "from": {
         "$ref": "#/components/schemas/nullable_member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
        }
       },
       "required": [
@@ -12636,6 +13053,57 @@
        "conversation_id",
        "application_id",
        "timestamp"
+      ]
+     },
+     {
+      "type": "object",
+      "properties": {
+       "params": {
+        "type": "object"
+       },
+       "id": {
+        "$ref": "#/components/schemas/event_id"
+       },
+       "conversation_id": {
+        "$ref": "#/components/schemas/conversation_id"
+       },
+       "application_id": {
+        "$ref": "#/components/schemas/application_id"
+       },
+       "timestamp": {
+        "$ref": "#/components/schemas/date"
+       },
+       "from": {
+        "$ref": "#/components/schemas/member_id"
+       },
+       "_embedded": {
+        "$ref": "#/components/schemas/event_embedded"
+       },
+       "type": {
+        "type": "string",
+        "enum": [
+         "message:received"
+        ]
+       },
+       "body": {
+        "type": "object",
+        "properties": {
+         "message": {
+          "type": "object"
+         }
+        },
+        "required": [
+         "message"
+        ]
+       }
+      },
+      "required": [
+       "id",
+       "conversation_id",
+       "application_id",
+       "timestamp",
+       "from",
+       "type"
       ]
      }
     ]
@@ -12890,6 +13358,13 @@
       "JOINED",
       "LEFT"
      ]
+    }
+   },
+   "name": {
+    "name": "name",
+    "in": "query",
+    "schema": {
+     "type": "string"
     }
    }
   },
@@ -13188,6 +13663,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -13249,6 +13727,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -13338,6 +13819,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -13407,6 +13891,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -13505,6 +13992,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -13574,6 +14064,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -13708,6 +14201,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -13808,6 +14304,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -13878,6 +14377,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -13941,6 +14443,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14003,6 +14508,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -14079,6 +14587,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14148,6 +14659,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -14219,6 +14733,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14288,6 +14805,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -14359,6 +14879,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14429,6 +14952,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14498,6 +15024,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -14598,6 +15127,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14668,6 +15200,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -14737,6 +15272,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -14811,6 +15349,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -15023,6 +15564,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15132,6 +15676,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15233,6 +15780,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15320,6 +15870,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15389,6 +15942,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -15593,6 +16149,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15695,6 +16254,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15784,6 +16346,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15845,6 +16410,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -15908,6 +16476,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -15970,6 +16541,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -16031,6 +16605,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -16116,6 +16693,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -16254,6 +16834,9 @@
             },
             "from": {
              "$ref": "#/components/schemas/nullable_member_id"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             }
            },
            "required": [
@@ -16284,6 +16867,9 @@
             },
             "state": {
              "$ref": "#/components/schemas/event_state"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             },
             "body": {
              "oneOf": [
@@ -16434,6 +17020,9 @@
             },
             "from": {
              "$ref": "#/components/schemas/nullable_member_id"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             }
            },
            "required": [
@@ -16464,6 +17053,9 @@
             },
             "state": {
              "$ref": "#/components/schemas/event_state"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             },
             "body": {
              "oneOf": [
@@ -16562,6 +17154,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -16642,6 +17237,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -16726,6 +17324,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -16803,6 +17404,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -16879,6 +17483,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -17020,6 +17627,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17089,6 +17699,90 @@
           "type": {
            "type": "string",
            "enum": [
+            "audio:asr:record:done"
+           ]
+          },
+          "id": {
+           "$ref": "#/components/schemas/event_id"
+          },
+          "timestamp": {
+           "$ref": "#/components/schemas/iso_date"
+          },
+          "state": {
+           "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
+          "body": {
+           "oneOf": [
+            {
+             "type": "object",
+             "properties": {
+              "channel": {
+               "oneOf": [
+                {
+                 "$ref": "#/components/schemas/channel_lite"
+                },
+                {
+                 "$ref": "#/components/schemas/channel"
+                }
+               ]
+              },
+              "asr": {
+               "$ref": "#/components/schemas/asr_record_done"
+              }
+             },
+             "required": [
+              "channel",
+              "asr"
+             ]
+            },
+            {
+             "type": "object",
+             "properties": {
+              "timestamp": {
+               "type": "object",
+               "properties": {
+                "deleted": {
+                 "$ref": "#/components/schemas/iso_date"
+                }
+               },
+               "required": [
+                "deleted"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "conversation_id": {
+           "$ref": "#/components/schemas/conversation_id"
+          },
+          "application_id": {
+           "$ref": "#/components/schemas/application_id"
+          }
+         },
+         "required": [
+          "type",
+          "id",
+          "timestamp",
+          "conversation_id",
+          "application_id"
+         ]
+        },
+        {
+         "type": "object",
+         "properties": {
+          "to": {
+           "$ref": "#/components/schemas/member_id"
+          },
+          "from": {
+           "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "type": {
+           "type": "string",
+           "enum": [
             "rtc:terminate"
            ]
           },
@@ -17100,6 +17794,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -17174,6 +17871,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -17262,6 +17962,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17336,6 +18039,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17398,6 +18104,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -17462,6 +18171,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17525,11 +18237,87 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
              "type": "object",
              "properties": {}
+            },
+            {
+             "type": "object",
+             "properties": {
+              "timestamp": {
+               "type": "object",
+               "properties": {
+                "deleted": {
+                 "$ref": "#/components/schemas/iso_date"
+                }
+               },
+               "required": [
+                "deleted"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "conversation_id": {
+           "$ref": "#/components/schemas/conversation_id"
+          },
+          "application_id": {
+           "$ref": "#/components/schemas/application_id"
+          }
+         },
+         "required": [
+          "type",
+          "id",
+          "timestamp",
+          "conversation_id",
+          "application_id"
+         ]
+        },
+        {
+         "type": "object",
+         "properties": {
+          "to": {
+           "$ref": "#/components/schemas/member_id"
+          },
+          "from": {
+           "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "type": {
+           "type": "string",
+           "enum": [
+            "message:received"
+           ]
+          },
+          "id": {
+           "$ref": "#/components/schemas/event_id"
+          },
+          "timestamp": {
+           "$ref": "#/components/schemas/iso_date"
+          },
+          "state": {
+           "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
+          "body": {
+           "oneOf": [
+            {
+             "type": "object",
+             "properties": {
+              "message": {
+               "type": "object"
+              }
+             },
+             "required": [
+              "message"
+             ]
             },
             {
              "type": "object",
@@ -17598,6 +18386,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17655,6 +18446,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -17740,6 +18534,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17805,6 +18602,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -17899,6 +18699,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -17964,6 +18767,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -18094,6 +18900,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18190,6 +18999,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18256,6 +19068,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18315,6 +19130,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18373,6 +19191,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -18445,6 +19266,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18510,6 +19334,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -18577,6 +19404,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18642,6 +19472,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -18709,6 +19542,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18775,6 +19611,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -18840,6 +19679,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -18936,6 +19778,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19002,6 +19847,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19067,6 +19915,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -19137,6 +19988,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -19345,6 +20199,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19450,6 +20307,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19547,6 +20407,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19630,6 +20493,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19695,6 +20561,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -19895,6 +20764,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -19993,6 +20865,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -20078,6 +20953,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -20135,6 +21013,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -20194,6 +21075,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -20252,6 +21136,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -20309,6 +21196,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -20390,6 +21280,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -20521,6 +21414,9 @@
             },
             "from": {
              "$ref": "#/components/schemas/nullable_member_id"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             }
            },
            "required": [
@@ -20550,6 +21446,9 @@
             },
             "state": {
              "$ref": "#/components/schemas/event_state"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             },
             "body": {
              "oneOf": [
@@ -20693,6 +21592,9 @@
             },
             "from": {
              "$ref": "#/components/schemas/nullable_member_id"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             }
            },
            "required": [
@@ -20722,6 +21624,9 @@
             },
             "state": {
              "$ref": "#/components/schemas/event_state"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             },
             "body": {
              "oneOf": [
@@ -20816,6 +21721,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -20892,6 +21800,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -20972,6 +21883,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21045,6 +21959,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21117,6 +22034,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -21254,6 +22174,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21319,6 +22242,86 @@
           "type": {
            "type": "string",
            "enum": [
+            "audio:asr:record:done"
+           ]
+          },
+          "id": {
+           "$ref": "#/components/schemas/event_id"
+          },
+          "timestamp": {
+           "$ref": "#/components/schemas/iso_date"
+          },
+          "state": {
+           "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
+          "body": {
+           "oneOf": [
+            {
+             "type": "object",
+             "properties": {
+              "channel": {
+               "oneOf": [
+                {
+                 "$ref": "#/components/schemas/channel_lite"
+                },
+                {
+                 "$ref": "#/components/schemas/channel"
+                }
+               ]
+              },
+              "asr": {
+               "$ref": "#/components/schemas/asr_record_done"
+              }
+             },
+             "required": [
+              "channel",
+              "asr"
+             ]
+            },
+            {
+             "type": "object",
+             "properties": {
+              "timestamp": {
+               "type": "object",
+               "properties": {
+                "deleted": {
+                 "$ref": "#/components/schemas/iso_date"
+                }
+               },
+               "required": [
+                "deleted"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "_links": {
+           "$ref": "#/components/schemas/_links"
+          }
+         },
+         "required": [
+          "type",
+          "id",
+          "timestamp",
+          "_links"
+         ]
+        },
+        {
+         "type": "object",
+         "properties": {
+          "to": {
+           "$ref": "#/components/schemas/member_id"
+          },
+          "from": {
+           "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "type": {
+           "type": "string",
+           "enum": [
             "rtc:terminate"
            ]
           },
@@ -21330,6 +22333,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -21400,6 +22406,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -21484,6 +22493,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21554,6 +22566,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21612,6 +22627,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -21672,6 +22690,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21731,11 +22752,83 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
              "type": "object",
              "properties": {}
+            },
+            {
+             "type": "object",
+             "properties": {
+              "timestamp": {
+               "type": "object",
+               "properties": {
+                "deleted": {
+                 "$ref": "#/components/schemas/iso_date"
+                }
+               },
+               "required": [
+                "deleted"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "_links": {
+           "$ref": "#/components/schemas/_links"
+          }
+         },
+         "required": [
+          "type",
+          "id",
+          "timestamp",
+          "_links"
+         ]
+        },
+        {
+         "type": "object",
+         "properties": {
+          "to": {
+           "$ref": "#/components/schemas/member_id"
+          },
+          "from": {
+           "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "type": {
+           "type": "string",
+           "enum": [
+            "message:received"
+           ]
+          },
+          "id": {
+           "$ref": "#/components/schemas/event_id"
+          },
+          "timestamp": {
+           "$ref": "#/components/schemas/iso_date"
+          },
+          "state": {
+           "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
+          "body": {
+           "oneOf": [
+            {
+             "type": "object",
+             "properties": {
+              "message": {
+               "type": "object"
+              }
+             },
+             "required": [
+              "message"
+             ]
             },
             {
              "type": "object",
@@ -21800,6 +22893,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -21857,6 +22953,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -21942,6 +23041,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22007,6 +23109,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -22101,6 +23206,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22166,6 +23274,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -22296,6 +23407,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22392,6 +23506,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22458,6 +23575,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22517,6 +23637,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22575,6 +23698,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -22647,6 +23773,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22712,6 +23841,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -22779,6 +23911,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22844,6 +23979,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -22911,6 +24049,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -22977,6 +24118,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23042,6 +24186,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -23138,6 +24285,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23204,6 +24354,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23254,6 +24407,9 @@
           },
           "from": {
            "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "type": {
            "type": "string",
@@ -23316,6 +24472,9 @@
           },
           "from": {
            "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "type": {
            "type": "string",
@@ -23394,6 +24553,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23463,6 +24625,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -23671,6 +24836,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23776,6 +24944,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23873,6 +25044,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -23956,6 +25130,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -24021,6 +25198,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -24221,6 +25401,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -24319,6 +25502,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -24404,6 +25590,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -24461,6 +25650,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -24520,6 +25712,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -24578,6 +25773,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -24635,6 +25833,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -24716,6 +25917,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -24847,6 +26051,9 @@
             },
             "from": {
              "$ref": "#/components/schemas/nullable_member_id"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             }
            },
            "required": [
@@ -24876,6 +26083,9 @@
             },
             "state": {
              "$ref": "#/components/schemas/event_state"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             },
             "body": {
              "oneOf": [
@@ -25019,6 +26229,9 @@
             },
             "from": {
              "$ref": "#/components/schemas/nullable_member_id"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             }
            },
            "required": [
@@ -25048,6 +26261,9 @@
             },
             "state": {
              "$ref": "#/components/schemas/event_state"
+            },
+            "_embedded": {
+             "$ref": "#/components/schemas/event_embedded"
             },
             "body": {
              "oneOf": [
@@ -25142,6 +26358,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -25218,6 +26437,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -25298,6 +26520,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -25371,6 +26596,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -25443,6 +26671,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -25580,6 +26811,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -25645,6 +26879,86 @@
           "type": {
            "type": "string",
            "enum": [
+            "audio:asr:record:done"
+           ]
+          },
+          "id": {
+           "$ref": "#/components/schemas/event_id"
+          },
+          "timestamp": {
+           "$ref": "#/components/schemas/iso_date"
+          },
+          "state": {
+           "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
+          "body": {
+           "oneOf": [
+            {
+             "type": "object",
+             "properties": {
+              "channel": {
+               "oneOf": [
+                {
+                 "$ref": "#/components/schemas/channel_lite"
+                },
+                {
+                 "$ref": "#/components/schemas/channel"
+                }
+               ]
+              },
+              "asr": {
+               "$ref": "#/components/schemas/asr_record_done"
+              }
+             },
+             "required": [
+              "channel",
+              "asr"
+             ]
+            },
+            {
+             "type": "object",
+             "properties": {
+              "timestamp": {
+               "type": "object",
+               "properties": {
+                "deleted": {
+                 "$ref": "#/components/schemas/iso_date"
+                }
+               },
+               "required": [
+                "deleted"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "_links": {
+           "$ref": "#/components/schemas/_links"
+          }
+         },
+         "required": [
+          "type",
+          "id",
+          "timestamp",
+          "_links"
+         ]
+        },
+        {
+         "type": "object",
+         "properties": {
+          "to": {
+           "$ref": "#/components/schemas/member_id"
+          },
+          "from": {
+           "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "type": {
+           "type": "string",
+           "enum": [
             "rtc:terminate"
            ]
           },
@@ -25656,6 +26970,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -25726,6 +27043,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -25810,6 +27130,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -25880,6 +27203,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -25938,6 +27264,9 @@
           },
           "state": {
            "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
           },
           "body": {
            "oneOf": [
@@ -25998,6 +27327,9 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
@@ -26057,11 +27389,83 @@
           "state": {
            "$ref": "#/components/schemas/event_state"
           },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
           "body": {
            "oneOf": [
             {
              "type": "object",
              "properties": {}
+            },
+            {
+             "type": "object",
+             "properties": {
+              "timestamp": {
+               "type": "object",
+               "properties": {
+                "deleted": {
+                 "$ref": "#/components/schemas/iso_date"
+                }
+               },
+               "required": [
+                "deleted"
+               ]
+              }
+             }
+            }
+           ]
+          },
+          "_links": {
+           "$ref": "#/components/schemas/_links"
+          }
+         },
+         "required": [
+          "type",
+          "id",
+          "timestamp",
+          "_links"
+         ]
+        },
+        {
+         "type": "object",
+         "properties": {
+          "to": {
+           "$ref": "#/components/schemas/member_id"
+          },
+          "from": {
+           "$ref": "#/components/schemas/nullable_member_id"
+          },
+          "type": {
+           "type": "string",
+           "enum": [
+            "message:received"
+           ]
+          },
+          "id": {
+           "$ref": "#/components/schemas/event_id"
+          },
+          "timestamp": {
+           "$ref": "#/components/schemas/iso_date"
+          },
+          "state": {
+           "$ref": "#/components/schemas/event_state"
+          },
+          "_embedded": {
+           "$ref": "#/components/schemas/event_embedded"
+          },
+          "body": {
+           "oneOf": [
+            {
+             "type": "object",
+             "properties": {
+              "message": {
+               "type": "object"
+              }
+             },
+             "required": [
+              "message"
+             ]
             },
             {
              "type": "object",
@@ -26120,6 +27524,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26177,6 +27584,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -26263,6 +27673,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26329,6 +27742,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -26424,6 +27840,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26490,6 +27909,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -26622,6 +28044,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26719,6 +28144,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26786,6 +28214,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26847,6 +28278,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -26907,6 +28341,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -26981,6 +28418,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -27048,6 +28488,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -27117,6 +28560,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -27184,6 +28630,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -27253,6 +28702,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -27321,6 +28773,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -27388,6 +28843,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -27486,6 +28944,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -27554,6 +29015,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -27621,6 +29085,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -27693,6 +29160,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -27903,6 +29373,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28010,6 +29483,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28109,6 +29585,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28193,6 +29672,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28259,6 +29741,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -28461,6 +29946,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28561,6 +30049,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28648,6 +30139,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28707,6 +30201,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -28768,6 +30265,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28828,6 +30328,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -28887,6 +30390,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -28970,6 +30476,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -29113,6 +30622,9 @@
              },
              "from": {
               "$ref": "#/components/schemas/nullable_member_id"
+             },
+             "_embedded": {
+              "$ref": "#/components/schemas/event_embedded"
              }
             },
             "required": [
@@ -29137,6 +30649,9 @@
              },
              "state": {
               "$ref": "#/components/schemas/event_state"
+             },
+             "_embedded": {
+              "$ref": "#/components/schemas/event_embedded"
              },
              "href": {
               "type": "string",
@@ -29289,6 +30804,9 @@
              },
              "from": {
               "$ref": "#/components/schemas/nullable_member_id"
+             },
+             "_embedded": {
+              "$ref": "#/components/schemas/event_embedded"
              }
             },
             "required": [
@@ -29313,6 +30831,9 @@
              },
              "state": {
               "$ref": "#/components/schemas/event_state"
+             },
+             "_embedded": {
+              "$ref": "#/components/schemas/event_embedded"
              },
              "href": {
               "type": "string",
@@ -29406,6 +30927,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -29484,6 +31008,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -29565,6 +31092,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -29640,6 +31170,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -29714,6 +31247,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -29853,6 +31389,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -29932,6 +31471,91 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
+           "href": {
+            "type": "string",
+            "format": "uri"
+           },
+           "body": {
+            "oneOf": [
+             {
+              "type": "object",
+              "properties": {
+               "channel": {
+                "oneOf": [
+                 {
+                  "$ref": "#/components/schemas/channel_lite"
+                 },
+                 {
+                  "$ref": "#/components/schemas/channel"
+                 }
+                ]
+               },
+               "asr": {
+                "$ref": "#/components/schemas/asr_record_done"
+               }
+              },
+              "required": [
+               "channel",
+               "asr"
+              ]
+             },
+             {
+              "type": "object",
+              "properties": {
+               "timestamp": {
+                "type": "object",
+                "properties": {
+                 "deleted": {
+                  "$ref": "#/components/schemas/iso_date"
+                 }
+                },
+                "required": [
+                 "deleted"
+                ]
+               }
+              }
+             }
+            ]
+           },
+           "from": {
+            "$ref": "#/components/schemas/member_id"
+           },
+           "type": {
+            "type": "string",
+            "enum": [
+             "audio:asr:record:done"
+            ]
+           }
+          },
+          "required": [
+           "id",
+           "timestamp",
+           "href",
+           "from",
+           "type"
+          ]
+         },
+         {
+          "type": "object",
+          "properties": {
+           "to": {
+            "$ref": "#/components/schemas/member_id"
+           },
+           "id": {
+            "$ref": "#/components/schemas/event_id"
+           },
+           "timestamp": {
+            "$ref": "#/components/schemas/iso_date"
+           },
+           "state": {
+            "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -30002,6 +31626,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -30087,6 +31714,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -30158,6 +31788,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -30217,6 +31850,9 @@
            },
            "state": {
             "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
            },
            "href": {
             "type": "string",
@@ -30278,6 +31914,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -30338,6 +31977,9 @@
            "state": {
             "$ref": "#/components/schemas/event_state"
            },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
            "href": {
             "type": "string",
             "format": "uri"
@@ -30380,6 +32022,77 @@
            "id",
            "timestamp",
            "href",
+           "type"
+          ]
+         },
+         {
+          "type": "object",
+          "properties": {
+           "to": {
+            "$ref": "#/components/schemas/member_id"
+           },
+           "id": {
+            "$ref": "#/components/schemas/event_id"
+           },
+           "timestamp": {
+            "$ref": "#/components/schemas/iso_date"
+           },
+           "state": {
+            "$ref": "#/components/schemas/event_state"
+           },
+           "_embedded": {
+            "$ref": "#/components/schemas/event_embedded"
+           },
+           "href": {
+            "type": "string",
+            "format": "uri"
+           },
+           "body": {
+            "oneOf": [
+             {
+              "type": "object",
+              "properties": {
+               "message": {
+                "type": "object"
+               }
+              },
+              "required": [
+               "message"
+              ]
+             },
+             {
+              "type": "object",
+              "properties": {
+               "timestamp": {
+                "type": "object",
+                "properties": {
+                 "deleted": {
+                  "$ref": "#/components/schemas/iso_date"
+                 }
+                },
+                "required": [
+                 "deleted"
+                ]
+               }
+              }
+             }
+            ]
+           },
+           "from": {
+            "$ref": "#/components/schemas/member_id"
+           },
+           "type": {
+            "type": "string",
+            "enum": [
+             "message:received"
+            ]
+           }
+          },
+          "required": [
+           "id",
+           "timestamp",
+           "href",
+           "from",
            "type"
           ]
          }
@@ -31417,6 +33130,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -31473,6 +33189,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -31558,6 +33277,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -31623,6 +33345,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -31717,6 +33442,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -31782,6 +33510,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -31913,6 +33644,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32009,6 +33743,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32075,6 +33812,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32135,6 +33875,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32194,6 +33937,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -32267,6 +34013,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32333,6 +34082,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -32401,6 +34153,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32467,6 +34222,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -32535,6 +34293,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32602,6 +34363,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32668,6 +34432,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -32765,6 +34532,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32832,6 +34602,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -32898,6 +34671,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -32969,6 +34745,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -33178,6 +34957,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33284,6 +35066,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33382,6 +35167,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33465,6 +35253,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33530,6 +35321,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -33731,6 +35525,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33830,6 +35627,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33916,6 +35716,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -33974,6 +35777,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -34034,6 +35840,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -34093,6 +35902,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -34151,6 +35963,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -34233,6 +36048,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -34374,6 +36192,9 @@
                    },
                    "from": {
                     "$ref": "#/components/schemas/nullable_member_id"
+                   },
+                   "_embedded": {
+                    "$ref": "#/components/schemas/event_embedded"
                    }
                   },
                   "required": [
@@ -34398,6 +36219,9 @@
                    },
                    "state": {
                     "$ref": "#/components/schemas/event_state"
+                   },
+                   "_embedded": {
+                    "$ref": "#/components/schemas/event_embedded"
                    },
                    "_links": {
                     "$ref": "#/components/schemas/_links"
@@ -34548,6 +36372,9 @@
                    },
                    "from": {
                     "$ref": "#/components/schemas/nullable_member_id"
+                   },
+                   "_embedded": {
+                    "$ref": "#/components/schemas/event_embedded"
                    }
                   },
                   "required": [
@@ -34572,6 +36399,9 @@
                    },
                    "state": {
                     "$ref": "#/components/schemas/event_state"
+                   },
+                   "_embedded": {
+                    "$ref": "#/components/schemas/event_embedded"
                    },
                    "_links": {
                     "$ref": "#/components/schemas/_links"
@@ -34664,6 +36494,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -34741,6 +36574,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -34821,6 +36657,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -34895,6 +36734,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -34968,6 +36810,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -35106,6 +36951,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -35184,6 +37032,90 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
+                 "_links": {
+                  "$ref": "#/components/schemas/_links"
+                 },
+                 "body": {
+                  "oneOf": [
+                   {
+                    "type": "object",
+                    "properties": {
+                     "channel": {
+                      "oneOf": [
+                       {
+                        "$ref": "#/components/schemas/channel_lite"
+                       },
+                       {
+                        "$ref": "#/components/schemas/channel"
+                       }
+                      ]
+                     },
+                     "asr": {
+                      "$ref": "#/components/schemas/asr_record_done"
+                     }
+                    },
+                    "required": [
+                     "channel",
+                     "asr"
+                    ]
+                   },
+                   {
+                    "type": "object",
+                    "properties": {
+                     "timestamp": {
+                      "type": "object",
+                      "properties": {
+                       "deleted": {
+                        "$ref": "#/components/schemas/iso_date"
+                       }
+                      },
+                      "required": [
+                       "deleted"
+                      ]
+                     }
+                    }
+                   }
+                  ]
+                 },
+                 "from": {
+                  "$ref": "#/components/schemas/member_id"
+                 },
+                 "type": {
+                  "type": "string",
+                  "enum": [
+                   "audio:asr:record:done"
+                  ]
+                 }
+                },
+                "required": [
+                 "id",
+                 "timestamp",
+                 "_links",
+                 "from",
+                 "type"
+                ]
+               },
+               {
+                "type": "object",
+                "properties": {
+                 "to": {
+                  "$ref": "#/components/schemas/member_id"
+                 },
+                 "id": {
+                  "$ref": "#/components/schemas/event_id"
+                 },
+                 "timestamp": {
+                  "$ref": "#/components/schemas/iso_date"
+                 },
+                 "state": {
+                  "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -35253,6 +37185,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -35337,6 +37272,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -35407,6 +37345,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -35465,6 +37406,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -35525,6 +37469,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -35584,6 +37531,9 @@
                  "state": {
                   "$ref": "#/components/schemas/event_state"
                  },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
                  },
@@ -35625,6 +37575,76 @@
                  "id",
                  "timestamp",
                  "_links",
+                 "type"
+                ]
+               },
+               {
+                "type": "object",
+                "properties": {
+                 "to": {
+                  "$ref": "#/components/schemas/member_id"
+                 },
+                 "id": {
+                  "$ref": "#/components/schemas/event_id"
+                 },
+                 "timestamp": {
+                  "$ref": "#/components/schemas/iso_date"
+                 },
+                 "state": {
+                  "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
+                 },
+                 "_links": {
+                  "$ref": "#/components/schemas/_links"
+                 },
+                 "body": {
+                  "oneOf": [
+                   {
+                    "type": "object",
+                    "properties": {
+                     "message": {
+                      "type": "object"
+                     }
+                    },
+                    "required": [
+                     "message"
+                    ]
+                   },
+                   {
+                    "type": "object",
+                    "properties": {
+                     "timestamp": {
+                      "type": "object",
+                      "properties": {
+                       "deleted": {
+                        "$ref": "#/components/schemas/iso_date"
+                       }
+                      },
+                      "required": [
+                       "deleted"
+                      ]
+                     }
+                    }
+                   }
+                  ]
+                 },
+                 "from": {
+                  "$ref": "#/components/schemas/member_id"
+                 },
+                 "type": {
+                  "type": "string",
+                  "enum": [
+                   "message:received"
+                  ]
+                 }
+                },
+                "required": [
+                 "id",
+                 "timestamp",
+                 "_links",
+                 "from",
                  "type"
                 ]
                }
@@ -35896,6 +37916,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -35952,6 +37975,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -36037,6 +38063,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36102,6 +38131,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -36196,6 +38228,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36261,6 +38296,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -36392,6 +38430,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36488,6 +38529,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36554,6 +38598,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36614,6 +38661,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36673,6 +38723,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -36746,6 +38799,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36812,6 +38868,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -36880,6 +38939,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -36946,6 +39008,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -37014,6 +39079,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37081,6 +39149,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37147,6 +39218,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -37244,6 +39318,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37311,6 +39388,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37377,6 +39457,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -37448,6 +39531,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -37657,6 +39743,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37763,6 +39852,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37861,6 +39953,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -37944,6 +40039,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -38009,6 +40107,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -38210,6 +40311,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -38309,6 +40413,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -38395,6 +40502,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -38453,6 +40563,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -38513,6 +40626,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -38572,6 +40688,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -38630,6 +40749,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -38712,6 +40834,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -38853,6 +40978,9 @@
                  },
                  "from": {
                   "$ref": "#/components/schemas/nullable_member_id"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  }
                 },
                 "required": [
@@ -38877,6 +41005,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -39027,6 +41158,9 @@
                  },
                  "from": {
                   "$ref": "#/components/schemas/nullable_member_id"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  }
                 },
                 "required": [
@@ -39051,6 +41185,9 @@
                  },
                  "state": {
                   "$ref": "#/components/schemas/event_state"
+                 },
+                 "_embedded": {
+                  "$ref": "#/components/schemas/event_embedded"
                  },
                  "_links": {
                   "$ref": "#/components/schemas/_links"
@@ -39143,6 +41280,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39220,6 +41360,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -39300,6 +41443,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39374,6 +41520,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39447,6 +41596,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -39585,6 +41737,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39663,6 +41818,90 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
+               "_links": {
+                "$ref": "#/components/schemas/_links"
+               },
+               "body": {
+                "oneOf": [
+                 {
+                  "type": "object",
+                  "properties": {
+                   "channel": {
+                    "oneOf": [
+                     {
+                      "$ref": "#/components/schemas/channel_lite"
+                     },
+                     {
+                      "$ref": "#/components/schemas/channel"
+                     }
+                    ]
+                   },
+                   "asr": {
+                    "$ref": "#/components/schemas/asr_record_done"
+                   }
+                  },
+                  "required": [
+                   "channel",
+                   "asr"
+                  ]
+                 },
+                 {
+                  "type": "object",
+                  "properties": {
+                   "timestamp": {
+                    "type": "object",
+                    "properties": {
+                     "deleted": {
+                      "$ref": "#/components/schemas/iso_date"
+                     }
+                    },
+                    "required": [
+                     "deleted"
+                    ]
+                   }
+                  }
+                 }
+                ]
+               },
+               "from": {
+                "$ref": "#/components/schemas/member_id"
+               },
+               "type": {
+                "type": "string",
+                "enum": [
+                 "audio:asr:record:done"
+                ]
+               }
+              },
+              "required": [
+               "id",
+               "timestamp",
+               "_links",
+               "from",
+               "type"
+              ]
+             },
+             {
+              "type": "object",
+              "properties": {
+               "to": {
+                "$ref": "#/components/schemas/member_id"
+               },
+               "id": {
+                "$ref": "#/components/schemas/event_id"
+               },
+               "timestamp": {
+                "$ref": "#/components/schemas/iso_date"
+               },
+               "state": {
+                "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39732,6 +41971,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -39816,6 +42058,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39886,6 +42131,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -39944,6 +42192,9 @@
                },
                "state": {
                 "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
                },
                "_links": {
                 "$ref": "#/components/schemas/_links"
@@ -40004,6 +42255,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -40063,6 +42317,9 @@
                "state": {
                 "$ref": "#/components/schemas/event_state"
                },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
                "_links": {
                 "$ref": "#/components/schemas/_links"
                },
@@ -40104,6 +42361,76 @@
                "id",
                "timestamp",
                "_links",
+               "type"
+              ]
+             },
+             {
+              "type": "object",
+              "properties": {
+               "to": {
+                "$ref": "#/components/schemas/member_id"
+               },
+               "id": {
+                "$ref": "#/components/schemas/event_id"
+               },
+               "timestamp": {
+                "$ref": "#/components/schemas/iso_date"
+               },
+               "state": {
+                "$ref": "#/components/schemas/event_state"
+               },
+               "_embedded": {
+                "$ref": "#/components/schemas/event_embedded"
+               },
+               "_links": {
+                "$ref": "#/components/schemas/_links"
+               },
+               "body": {
+                "oneOf": [
+                 {
+                  "type": "object",
+                  "properties": {
+                   "message": {
+                    "type": "object"
+                   }
+                  },
+                  "required": [
+                   "message"
+                  ]
+                 },
+                 {
+                  "type": "object",
+                  "properties": {
+                   "timestamp": {
+                    "type": "object",
+                    "properties": {
+                     "deleted": {
+                      "$ref": "#/components/schemas/iso_date"
+                     }
+                    },
+                    "required": [
+                     "deleted"
+                    ]
+                   }
+                  }
+                 }
+                ]
+               },
+               "from": {
+                "$ref": "#/components/schemas/member_id"
+               },
+               "type": {
+                "type": "string",
+                "enum": [
+                 "message:received"
+                ]
+               }
+              },
+              "required": [
+               "id",
+               "timestamp",
+               "_links",
+               "from",
                "type"
               ]
              }
@@ -42396,6 +44723,9 @@
         },
         "active": {
          "type": "boolean"
+        },
+        "save_audio": {
+         "type": "boolean"
         }
        }
       }
@@ -42436,6 +44766,9 @@
          "maximum": 60
         },
         "active": {
+         "type": "boolean"
+        },
+        "save_audio": {
          "type": "boolean"
         }
        }
