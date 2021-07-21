@@ -13111,6 +13111,15 @@
   },
   "parameters": {
    "event_type": {
+    "description": "Event type. A sequence of event types separated by a comma. The maximum number of items allowed is 5.",
+    "examples": {
+     "single": {
+      "value": "member:joined"
+     },
+     "sequence": {
+      "value": "member:joined,...,member:invited"
+     }
+    },
     "name": "event_type",
     "in": "query",
     "schema": {
