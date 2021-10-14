@@ -4,6 +4,10 @@ import flow_exec from "./flow_exec";
 import SequenceDiagramPrivate from 'react-sequence-diagram';
 const {execTemplateWebSeqDiagram} = flow_exec
 const { templates } =  require("./sequence_diagram_templates");
+const wsModule = require("./rtc_websequencediagram")
+
+const {createConversation, PSTNInboundCall,createUser} = wsModule()
+
 
 const template_rendered = templates.map(template => {
   return {
@@ -21,28 +25,58 @@ const SequenceDiagram =({input,onError}) =>  <SequenceDiagramPrivate
 />
 
 
-const TemplateList = ({onTemplateClick}) => {
+const diagramsSimple = [
+  {
+    title:"Create conversations",
+    description:"Create conversations",
+    diagram:createConversation().diagram
+  },
+  {
+    title:"PSTN inbound call",
+    description:"Receive a PSTN inbound call from a client calling an LVN",
+    diagram:PSTNInboundCall().diagram
+  },
+  {
+    title:"create user",
+    description:"create a user",
+    diagram: createUser().diagram
+  }
+
+]
+
+const diagramsFullScenarios = [
+
+  {
+    title:"PSTN inbound call",
+    description:"Receive a PSTN inbound call from a client calling an LVN",
+    diagram:PSTNInboundCall().diagram
+  }
+
+]
+
+const TemplateList = ({onTemplateClick, diagrams}) => {
   return (
     <div>
-      {template_rendered.map(({template,template_seq_diagram}, idx) => {
-        return (
-          <div key={idx} onClick={() => { onTemplateClick(template) }} >
-              <h2>{template.title}</h2>
-			  <p>{template.description}</p>
-              <SequenceDiagram input={template_seq_diagram} />
-          </div>
-        );
+      {diagrams.map(({diagram, title, description}, idx) => {
+          return (
+          <p key={idx} >
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <SequenceDiagram input={diagram} />
+          </p>
+          )
       })}
     </div>
   )
-
 }
 
 function SequenceDiagrams(){
 	return (
 		<div>
-			<h1>Conversation Service Diagrams</h1>
-			<TemplateList />
+			<h1>RTC Flow Diagrams - Atomic ones</h1>
+			<TemplateList diagrams={diagramsSimple} />
+      <h1>RTC Flow Diagrams - Full scenarios</h1>
+			<TemplateList diagrams={diagramsFullScenarios} />
 		</div>
 	)
 }

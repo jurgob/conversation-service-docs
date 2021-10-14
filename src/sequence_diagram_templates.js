@@ -67,6 +67,7 @@ const CREATE_CONVERSATION = {
 }
 
 
+
 module.exports = {
   templates: [CREATE_USER, CREATE_CONVERSATION]
 }
