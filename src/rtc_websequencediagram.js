@@ -69,7 +69,8 @@ function wsModule(options={}){
 
     }
 
-    function PSTNInboundCall(lvn='666'){
+    function PSTNInboundCall(props = {}){
+        const {lvn='666'} = props
         const mbEvent = {
             "event":"ringing",
             "call_id": "LEG_ID",
@@ -134,10 +135,22 @@ function wsModule(options={}){
         }
     }
 
+
+    function vapiInboundWithTTS(){
+        const lvn ="777"
+    const diagram = `
+        ${PSTNInboundCall({lvn})}
+`
+        return {
+            diagram
+        }
+    }
+
     return {
         createConversation,
         createUser,
-        PSTNInboundCall
+        PSTNInboundCall,
+        vapiInboundWithTTS
     }
 
 }
