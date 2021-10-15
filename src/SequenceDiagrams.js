@@ -6,7 +6,8 @@ const {execTemplateWebSeqDiagram} = flow_exec
 const { templates } =  require("./sequence_diagram_templates");
 const wsModule = require("./rtc_websequencediagram")
 
-const {createConversation, PSTNInboundCall,createUser} = wsModule()
+const {createConversation, getPSTNinboundRinging,createUser, 
+  fullPSTNinboundIVRwithTTS} = wsModule()
 
 
 const template_rendered = templates.map(template => {
@@ -32,9 +33,9 @@ const diagramsSimple = [
     diagram:createConversation().diagram
   },
   {
-    title:"PSTN inbound call",
+    title:"Get PSTN inbound ringing",
     description:"Receive a PSTN inbound call from a client calling an LVN",
-    diagram:PSTNInboundCall().diagram
+    diagram:getPSTNinboundRinging().diagram
   },
   {
     title:"create user",
@@ -47,9 +48,9 @@ const diagramsSimple = [
 const diagramsFullScenarios = [
 
   {
-    title:"PSTN inbound call",
-    description:"Receive a PSTN inbound call from a client calling an LVN",
-    diagram:PSTNInboundCall().diagram
+    title:"PSTN inbound IVR use case, aka VAPI hello world",
+    description:"Receive a PSTN inbound call from a client calling an LVN, respond with an text to speech, close the call ",
+    diagram:fullPSTNinboundIVRwithTTS().diagram
   }
 
 ]

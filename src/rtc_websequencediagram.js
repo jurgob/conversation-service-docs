@@ -27,6 +27,7 @@ function wsModule(options={}){
     participant "${LVN}"
     `
     }
+
     function indentData(data){
         const res = JSON.stringify(data, '  ', '  ').split('\n').map(line => {
         const whiteNum = line.search(/\S|$/)
@@ -35,6 +36,20 @@ function wsModule(options={}){
         return res
     }
 
+    function httpRequest({from, to, method, url, data}){
+        return `
+        ${from}->${to}: ${method} ${url}
+        Note right of ${from}: ${indentData(data)}
+        `
+    }
+
+    function httpResponse({from, to, status, res}){
+        return `
+        Note left of ${to}: ${indentData(res)}
+        ${to}->${from}: ${status}
+        
+        `
+    }
 
     function createConversation(props={}){
         const {name} = props
@@ -53,15 +68,11 @@ function wsModule(options={}){
         }
 
         const diagram =`
-    ${CBE}->${CS}: POST ${CS_URL}/v0.3/conversations
-    Note right of ${CBE}: ${indentData(request)}
-    ${CS}->${MB}: POST ${MB_URL}/api/mixers
-    Note right of ${CS}: ${indentData(requestMB)}
-    Note left of ${MB}: ${indentData(requestMBResponse)}
-    ${MB}->${CS}: 200
-    Note left of ${CS}: ${indentData(response)}
-    ${CS}->${CBE}: 200
-    `
+            ${httpRequest({from: CBE, to: CS, method: "POST", url: `${CS_URL}/v0.3/conversations`, data: request})}
+                ${httpRequest({from: CS, to: MB, method: "POST", url: `${MB_URL}/api/mixers`, data: requestMB})}
+                ${httpResponse({from: CS, to: MB, status: 200, res: requestMBResponse})}
+            ${httpResponse({from: CBE, to: CS, status: 201, res: response})}
+        `
 
         return {
             diagram
@@ -69,7 +80,7 @@ function wsModule(options={}){
 
     }
 
-    function PSTNInboundCall(props = {}){
+    function getPSTNinboundRinging(props = {}){
         const {lvn='666'} = props
         const mbEvent = {
             "event":"ringing",
@@ -104,7 +115,6 @@ function wsModule(options={}){
         ${CS}->${VAPI}: ${VAPI_INT_URL}/event/conversation
         Note right of ${CS}: ${indentData(csEventKnocking)}
 
-
     ` 
 
         return {
@@ -136,10 +146,10 @@ function wsModule(options={}){
     }
 
 
-    function vapiInboundWithTTS(){
+    function fullPSTNinboundIVRwithTTS(){
         const lvn ="777"
     const diagram = `
-        ${PSTNInboundCall({lvn})}
+        ${getPSTNinboundRinging({lvn}).diagram}
 `
         return {
             diagram
@@ -149,8 +159,8 @@ function wsModule(options={}){
     return {
         createConversation,
         createUser,
-        PSTNInboundCall,
-        vapiInboundWithTTS
+        getPSTNinboundRinging,
+        fullPSTNinboundIVRwithTTS
     }
 
 }
