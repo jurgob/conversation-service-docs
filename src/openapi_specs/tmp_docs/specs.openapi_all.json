@@ -1,0 +1,1126 @@
+{
+    "_meta": {
+        "decorate": {
+            "servers": [
+                {
+                    "url": "https://api.nexmo.com/beta"
+                }
+            ],
+            "info": {
+                "version": "1.6.0",
+                "title": "Nexmo Stitch API",
+                "description": "The Nexmo Stitch API enables you to build conversation features where communication can take place across multiple mediums including IP Messaging, PSTN Voice, SMS and WebRTC Audio and Video. The context of the conversations is maintained though each communication event taking place within a conversation, no matter the medium.",
+                "contact": {
+                    "name": "Nexmo Support",
+                    "url": "https://developer.nexmo.com/",
+                    "email": "ea-support@nexmo.com"
+                },
+                "x-label": "Developer Preview"
+            },
+            "security": [
+                {
+                    "bearerAuth": []
+                }
+            ]
+        }
+    },
+    "paths": {
+        "/conversations": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "List conversations",
+                        "x-swagger-router-controller": "listConversations",
+                        "x-group": "conversation"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "List Conversations Response Payload Object."
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Create a conversation",
+                        "x-swagger-router-controller": "createConversation",
+                        "x-group": "conversation"
+                    }
+                }
+            }
+        },
+        "/conversations/{conversation_id}": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Retrieve a conversation",
+                        "x-swagger-router-controller": "retrieveConversation",
+                        "x-group": "conversation"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Retrieve a conversation"
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "_meta": {
+                                        "decorate": {
+                                            "description": "Conversation Object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Update a conversation",
+                        "x-swagger-router-controller": "conversations",
+                        "x-group": "conversation"
+                    }
+                }
+            },
+            "delete": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Delete a conversation",
+                        "x-swagger-router-controller": "deleteConversation",
+                        "x-group": "conversation"
+                    }
+                }
+            }
+        },
+        "/conversations/{conversation_id}/events": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "List events",
+                        "x-swagger-router-controller": "getEvents",
+                        "x-group": "event"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Retrieve Events Response Payload Object"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Create an event",
+                        "x-swagger-router-controller": "createEvent",
+                        "x-group": "event"
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Create New Event Response Payload Object"
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "_meta": {
+                                        "decorate": {
+                                            "description": "Create New Event Response Payload Object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "_meta": {
+                                    "decorate": {
+                                        "description": "Create New Event Request Payload Object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/conversations/{conversation_id}/events/{event_id}": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Retrieve an event",
+                        "x-swagger-router-controller": "getEvent",
+                        "x-group": "event"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Retrieve an event Content Payload"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Delete an event",
+                        "x-swagger-router-controller": "deleteEvent",
+                        "x-group": "event"
+                    }
+                }
+            }
+        },
+        "/conversations/{conversation_id}/members": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "List members",
+                        "x-swagger-router-controller": "members",
+                        "x-group": "member"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Members List Object"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Create a member",
+                        "x-swagger-router-controller": "members",
+                        "x-group": "member"
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Create or invite Member in invite state "
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "_meta": {
+                                    "decorate": {
+                                        "description": "Create a Member in invite state "
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/conversations/{conversation_id}/members/{member_id}": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Retrieve a member",
+                        "x-swagger-router-controller": "members",
+                        "x-group": "member"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Retrieve member payload"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Update a member",
+                        "x-swagger-router-controller": "members",
+                        "x-group": "member"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Member retrived"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Delete a member",
+                        "x-swagger-router-controller": "members",
+                        "x-group": "member"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "List users",
+                        "x-swagger-router-controller": "users",
+                        "x-group": "user"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "List of users"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Create a user",
+                        "x-swagger-router-controller": "users",
+                        "x-group": "user"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Create a user response"
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "_meta": {
+                                    "decorate": {
+                                        "description": "Create a Member in invite state "
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Retrieve a user",
+                        "x-swagger-router-controller": "users",
+                        "x-group": "user"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Retrieve a user"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Update a user",
+                        "x-swagger-router-controller": "users",
+                        "x-group": "user"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "Retrieve a user"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Delete a user",
+                        "x-swagger-router-controller": "users",
+                        "x-group": "user"
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/conversations": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "List user conversations",
+                        "x-swagger-router-controller": "users",
+                        "x-group": "user"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "List user conversations"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/legs": {
+            "get": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "List legs",
+                        "x-swagger-router-controller": "listLegs",
+                        "x-group": "leg"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "_meta": {
+                            "decorate": {
+                                "description": "List Legs Succesfully"
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "_meta": {
+                                        "decorate": {
+                                            "description": "List Legs Response Payload Object",
+                                            "example": {
+                                                "count": 1,
+                                                "page_size": 10,
+                                                "record_index": 0,
+                                                "_links": {
+                                                    "self": {
+                                                        "href": "https://api.nexmo.com/beta/legs"
+                                                    }
+                                                },
+                                                "_embedded": {
+                                                    "legs": [
+                                                        {
+                                                            "uuid": "2a71f8a1-b6f1-42b3-9eef-c69729e17513",
+                                                            "type": "app",
+                                                            "conversation_uuid": "CON-511d076b-9d39-498c-baa7-b7a4bfbd6e32",
+                                                            "status": "completed",
+                                                            "from": {
+                                                                "type": "app"
+                                                            },
+                                                            "to": {
+                                                                "type": "app"
+                                                            },
+                                                            "start_time": "",
+                                                            "end_time": "",
+                                                            "rtc": {
+                                                                "session_id": "SES-84ebef0d-321a-47e6-8446-f4fcc5ca74b9",
+                                                                "state": "terminated"
+                                                            },
+                                                            "_links": {
+                                                                "self": {
+                                                                    "href": "https://api.nexmo.com/beta/legs/2a71f8a1-b6f1-42b3-9eef-c69729e17513"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/legs/{leg_id}": {
+            "delete": {
+                "_meta": {
+                    "decorate": {
+                        "summary": "Delete a leg",
+                        "x-swagger-router-controller": "deleteLeg",
+                        "x-group": "leg"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "_meta": {
+            "decorate" : {
+                "securitySchemes" : {
+                    "bearerAuth" : {
+                        "type": "http",
+                        "scheme": "bearer"
+                    }
+                }
+            }
+        },
+        "schemas": {
+            "leg_state": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Leg Status",
+                        "example": "terminated"
+                    }
+                }
+            },
+            "application_id":{
+                "_meta": {
+                    "decorate":{
+                        "description": "Application ID",
+                        "example": "ed9b091a-425b-4bd4-8457-20e531cb31de"
+                    }
+                }
+            },
+            "conversation_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "The unique identifier for this conversation",
+                        "example": "CON-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "session_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Session ID",
+                        "example": "SES-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "string_uri": {
+                "_meta": {
+                    "decorate": {
+                        "description": "String URI",
+                        "example": "https://example.com/"
+                    }
+                }
+            },
+            "rtc_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Rtc ID",
+                        "example": "RTC-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "member_name": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Member Name",
+                        "example": "some_name"
+                    }
+                }
+            },
+            "leg_status": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Leg status",
+                        "example": "answered"
+                    }
+                }
+            },
+            "full_direction": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Full direction",
+                        "example": "inbound"
+                    }
+                }
+            },
+            "dtmf_pattern": {
+                "_meta": {
+                    "decorate": {
+                        "pattern": "^([abcdABCD0-9*#pP])+$",
+                        "example": "abcd11"
+                    }
+                }
+            },
+            "audio_error": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Audio error",
+                        "nullable": true,
+                        "example": "some_audio_error"
+                    }
+                }
+            },
+            "nullable_member_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Member ID",
+                        "nullable": true,
+                        "example": "MEM-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "member_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Member ID",
+                        "example": "MEM-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "member_id_inviting": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Member ID (inside a member object). This is the member if of the mamber that sent the initation",
+                        "example": "MEM-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "member_action": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Invite or join a member to a conversation",
+                        "example": "join"
+                    }
+                }
+            },
+            "user_id_or_user_name": {
+                "_meta": {
+                    "decorate": {
+                        "description": "user name or user id of the inviter",
+                        "example": "someone_else_user_name"
+                    }
+                }
+            },
+            "user_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "User ID",
+                        "example": "USR-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "name": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Unique name",
+                        "example": "my_unique_name"
+                    }
+                }
+            },
+            "name_conversation": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Unique name for a conversation",
+                        "example": "customer_chat"
+                    }
+                }
+            },
+            "name_user": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Unique name for a user",
+                        "example": "my_user_name"
+                    }
+                }
+            },
+            "href": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a resources included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations/CON-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "href_conversation": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a conversation included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations/CON-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "href_conversations_list": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a conversations list included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations?page_size=2&record_index=10&"
+                    }
+                }
+            },
+            "href_member": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a member included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations/CON-63f61863-4a51-4f6b-86e1-46edebio0391/members/MEM-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "href_user": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a user included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations/USR-63f61863-4a51-4f6b-86e1-46edebio0391"
+                    }
+                }
+            },
+            "href_event": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a conversation event included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations/CON-63f61863-4a51-4f6b-86e1-46edebio0391/events/1"
+                    }
+                }
+            },
+            "href_rtc": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link towards a rtc (leg) included in Conversation Service API",
+                        "example": "https://api.nexmo.com/beta/converations/CON-63f61863-4a51-4f6b-86e1-46edebio0391/rtc/7777777777777"
+                    }
+                }
+            },
+            "event_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Event id. This is a progressive integer",
+                        "example": "5"
+                    }
+                }
+            },
+            "image_url": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A link to an image for conversations' and users' avatars",
+                        "example": "https://example.com/image.png"
+                    }
+                }
+            },
+            "display_name": {
+                "_meta": {
+                    "decorate": {
+                        "description": "The display name for the conversation. It does not have to be unique",
+                        "example": "Customer Chat"
+                    }
+                }
+            },
+            "display_name_user": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A string to be displayed as user name. It does not need to be unique",
+                        "example": "My User Name"
+                    }
+                }
+            },
+            "numbers": {
+                "_meta": {
+                    "decorate": {
+                        "description": "An object containing number on different channels. ",
+                        "example": {
+                            "pstn": 14155550100,
+                            "sms": 442079460000
+                        }
+                    }
+                }
+            },
+            "conversation_properties": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Conversation properties"
+                    }
+                }
+            },
+            "_links_conversations_list": {
+                "_meta": {
+                    "decorate": {
+                        "description": "A series of links between resources in this API in the http://stateless.co/hal_specification.html."
+                    }
+                }
+            },
+            "page_size": {
+                "_meta": {
+                    "decorate": {
+                        "description": "The amount of records returned in this response"
+                    }
+                }
+            },
+            "record_index": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Return `page_size` amount of conversations from this index in the response. That is, if your request returns 300 conversations, set `record_index` to 5 in order to return conversations 50 to 59. The default value is 0. That is, the first `page_size` calls."
+                    }
+                }
+            },
+            "timestamp": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Timestamp",
+                        "example": "2020-01-01T14:00:00.00Z"
+                    }
+                }
+            },
+            "timestamp_created": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Time of creation",
+                        "example": "2020-01-01T14:00:00.00Z"
+                    }
+                }
+            },
+            "timestamp_updated": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Time of last update",
+                        "example": "2020-01-01T14:05:00.00Z"
+                    }
+                }
+            },
+            "timestamp_destroyed": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Time of last update",
+                        "example": "2020-01-01T14:20:00.00Z"
+                    }
+                }
+            },
+            "timestamp_leg_start_time": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Time of leg start",
+                        "example": "2020-01-01T14:00:00.00Z"
+                    }
+                }
+            },
+            "timestamp_leg_end_time": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Time of leg end",
+                        "example": "2020-01-01T14:00:00.00Z"
+                    }
+                }
+            },
+            "timestamp_res_event": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Time of event creation",
+                        "example": "2020-01-01T14:00:00.00Z"
+                    }
+                }
+            },
+            "member_state": {
+                "_meta": {
+                    "decorate": {
+                        "description": "The state that the member is in. Possible values are `invited`, `joined`, `left`, or `unknown`",
+                        "example": "INVITED"
+                    }
+                }
+            },
+            "leg_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "The id of the leg. rtc_id and call_id are leg id",
+                        "example": "a595959595959595995"
+                    }
+                }
+            },
+            "channel_number": {
+                "_meta": {
+                    "decorate": {
+                        "description": "this can be a phone number or a random string",
+                        "example": "a447700900585"
+                    }
+                }
+            },
+            "channel_type": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Channel type",
+                        "example": "phone"
+                    }
+                }
+            },
+            "channel_extension": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Extension number",
+                        "example": "123456"
+                    }
+                }
+            },
+            "channel": {
+                "_meta": {
+                    "decorate": {
+                        "description": "When a user joins a conversation as a member, they can have one channel per membership. Channels can be one of `app`, `phone`, `sip`, `websocket`, `vbc`",
+                        "example": "app"
+                    }
+                }
+            },
+            "media": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Media Object",
+                        "example": {
+                            "audio_settings": {
+                                "enabled": false,
+                                "earmuffed": false,
+                                "muted": false
+                            }
+                        }
+                    }
+                }
+            },
+            "event_body": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Event Body",
+                        "example": {
+                            "text": "My Text"
+                        }
+                    }
+                }
+            },
+            "event_retrieved": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Retrieve Events Response Payload Object Item"
+                    }
+                }
+            },
+            "knocker_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Knocker ID. A knocker is a pre-member of a conversation who does not exist yet",
+                        "example": "a972836a-450f-35fa-156c-52a2ab5b7d25"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "leg_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Leg ID",
+                        "x-example": "6e99034ce755c5ad7fde645a46d140a4"
+                    },
+                    "parameter": {
+                        "name": "leg_id"
+                    }
+                }
+            },
+            "user_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "User ID",
+                        "x-example": "USR-00092382-3017-4abb-8306-4bee9e772f7f"
+                    },
+                    "parameter": {
+                        "name": "user_id"
+                    }
+                }
+            },
+            "conversation_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Conversation ID",
+                        "x-example": "CON-f972836a-550f-45fa-956c-12a2ab5b7d22"
+                    },
+                    "parameter": {
+                        "name": "conversation_id"
+                    }
+                }
+            },
+            "member_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Member ID",
+                        "x-example": "MEM-f972836a-550f-45fa-956c-12a2ab5b7d22"
+                    },
+                    "parameter": {
+                        "name": "member_id"
+                    }
+                }
+            },
+            "event_id": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Event ID",
+                        "x-example": "5"
+                    },
+                    "parameter": {
+                        "name": "event_id"
+                    }
+                }
+            },
+            "date_start": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Return the records that occurred after this point in time."
+                    },
+                    "parameter": {
+                        "name": "date_start"
+                    }
+                }
+            },
+            "date_end": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Return the records that occurred before this point in time."
+                    },
+                    "parameter": {
+                        "name": "date_end"
+                    }
+                }
+            },
+            "member_state": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Filter the result basing on member state"
+                    },
+                    "parameter": {
+                        "name": "state"
+                    }
+                }
+            },
+            "page_size": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Return this amount of records in the response"
+                    },
+                    "parameter": {
+                        "name": "page_size"
+                    }
+                }
+            },
+            "record_index": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Return calls from this index in the response"
+                    },
+                    "parameter": {
+                        "name": "record_index"
+                    }
+                }
+            },
+            "order": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Return the records in ascending or descending order."
+                    },
+                    "parameter": {
+                        "name": "order"
+                    }
+                }
+            },
+            "event_type": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Event type. A sequence of event types separated by a comma. The maximum number of items allowed is 5.",
+                        "examples": { 
+                            "single" : {
+                                "value" : "member:joined"
+                            },
+                            "sequence" : {
+                                "value" : "member:joined,...,member:invited"
+                            }
+                        }
+                    },
+                    "parameter": {
+                        "name": "order"
+                    }
+                }
+            }
+        },
+        "responses" : {
+            "error": {
+                "description": "",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "oneOf": [
+                                {},
+                                {
+                                    "properties": {
+                                        "invalid_parameters": {
+                                            "_meta" : {
+                                                "decorate": {
+                                                    "description": "Field present when an input validation error occurs"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "requestBodies": {
+            "EmptyBody": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Conversation Request Payload Object"
+                    }
+                },
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "_meta": {
+                                "decorate": {
+                                    "example": {}
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Conversation": {
+                "_meta": {
+                    "decorate": {
+                        "description": "Conversation Request Payload Object"
+                    }
+                }
+            }
+        }
+    }
+}
