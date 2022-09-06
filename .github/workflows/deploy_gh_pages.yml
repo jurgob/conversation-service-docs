@@ -8,7 +8,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     strategy:
       matrix:
@@ -23,5 +23,5 @@ jobs:
           cache: 'npm'
       - name: npm install 
         run: npm i
-      - name: Generate joi to openapi
+      - name: deploy
         run: npm run deploy
