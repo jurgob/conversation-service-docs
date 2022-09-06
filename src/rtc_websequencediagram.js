@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 
 function wsModule(options={}){
 
     let {SHOW_VAPI} = options
-    SHOW_VAPI = typeof SHOW_VAPI === 'booleand' ? SHOW_VAPI : true
+    SHOW_VAPI = typeof SHOW_VAPI === 'boolean' ? SHOW_VAPI : true
 
     const CBE = `CustomerBackend`
     const CS = `CS`

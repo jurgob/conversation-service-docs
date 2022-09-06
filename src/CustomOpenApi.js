@@ -28,6 +28,7 @@ function objectCompactView(openapiObject){
 
 }
 
+// eslint-disable-next-line no-unused-vars
 function propCompectView(prop){
 	if(prop.$ref)
 		return `<${prop.$ref}>`

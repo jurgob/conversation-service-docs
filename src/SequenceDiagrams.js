@@ -10,7 +10,7 @@ const {createConversation, getPSTNinboundRinging,createUser,
   fullPSTNinboundIVRwithTTS} = wsModule()
 
 
-const template_rendered = templates.map(template => {
+templates.map(template => {
   return {
     template,
     template_seq_diagram:execTemplateWebSeqDiagram(template)

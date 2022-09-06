@@ -1,6 +1,6 @@
 
 const cs_url_beta = `api.nexmo.com/beta`
-const cs_url_beta2 = `api.nexmo.com/beta2`
+// const cs_url_beta2 = `api.nexmo.com/beta2`
 
 const CREATE_USER = {
   "title": "create user",
