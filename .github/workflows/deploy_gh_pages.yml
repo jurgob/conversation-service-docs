@@ -1,0 +1,27 @@
+name: Deploy github pages
+
+on:
+  push:
+    branches:
+      - APICS-2325_automatise_gh_pages_deploy
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.15.3]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: npm install 
+        run: npm i
+      - name: Generate joi to openapi
+        run: npm run deploy
