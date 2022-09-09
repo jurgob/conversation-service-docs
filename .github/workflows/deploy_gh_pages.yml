@@ -24,11 +24,11 @@ jobs:
       - name: npm install 
         run: npm i
       - name: deploy
-        uses: oleksiyrudenko/gha-git-credentials@v2.1
-        with:
-          global: true
-          name: 'Bilal Kabat'
-          email: 'bilalkabat@vonage.com'
-          actor: 'bilalkabat'
-          token: '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'
-      - run: npm run deploy
+        # uses: oleksiyrudenko/gha-git-credentials@v2.1
+        # with:
+        #   global: true
+        #   name: 'Bilal Kabat'
+        #   email: 'bilalkabat@vonage.com'
+        #   actor: 'bilalkabat'
+        #   token: ''
+        run: npm run deploy
