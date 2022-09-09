@@ -16,6 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      # - uses: webfactory/ssh-agent@v0.5.4
+      #   with:
+      #       ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -26,7 +29,7 @@ jobs:
         run: npm i
       - name: deploy
         run: |
-          git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
-          git config --global user.email "bilal.kabat@vonage.com"
-          git config --global user.name "bilalkabat"
+          # git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
+          # git config --global user.email "bilal.kabat@vonage.com"
+          # git config --global user.name "bilalkabat"
           npm run deploy
