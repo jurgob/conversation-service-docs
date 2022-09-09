@@ -26,7 +26,7 @@ jobs:
         run: npm i
       - name: deploy
         run: |
-          git config --global url."https://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@github.com/".insteadOf ssh://git@github.com/
+          git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf ssh://git@github.com/
           git config --global user.email "bilal.kabat@vonage.com"
           git config --global user.name "bilalkabat"
           npm run deploy
