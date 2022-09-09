@@ -21,17 +21,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+          persist-credentials: false
       - name: npm install 
         run: npm i
       - name: deploy
-        # uses: oleksiyrudenko/gha-git-credentials@v2.1
-        # with:
-        #   global: true
-        #   name: 'Bilal Kabat'
-        #   email: 'bilalkabat@vonage.com'
-        #   actor: 'bilalkabat'
-        #   token: ''
         run: |
-          git config --global user.email "bilal.kabat@vonage.com"
-          git config --global user.name "bilalkabat"
+          git config --global url."https://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@github.com/".insteadOf ssh://git@github.com/
           npm run deploy
