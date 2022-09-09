@@ -31,4 +31,7 @@ jobs:
         #   email: 'bilalkabat@vonage.com'
         #   actor: 'bilalkabat'
         #   token: ''
-        run: npm run deploy
+        run: |
+          git config --global user.email "bilal.kabat@vonage.com"
+          git config --global user.name "bilalkabat"
+          npm run deploy
