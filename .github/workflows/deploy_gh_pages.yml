@@ -3,7 +3,7 @@ name: Deploy github pages
 on:
   push:
     branches:
-      - APICS-2325_automatise_gh_pages_deploy
+      - master
 
 jobs:
   build:
