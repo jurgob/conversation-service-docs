@@ -11,7 +11,7 @@
     "react-dom": "^16.9.0",
     "react-json-syntax-highlighter": "^0.1.17",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
+    "react-scripts": "5.0.1",
     "react-sequence-diagram": "0.0.12",
     "redoc": "^2.0.0-rc.14",
     "styled-components": "^4.3.2",
